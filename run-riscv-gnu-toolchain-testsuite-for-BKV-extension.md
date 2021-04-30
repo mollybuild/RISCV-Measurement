@@ -171,7 +171,7 @@ $ make report-binutils-newlib 2>&1|tee binutilslog.md
 
 扩展的字母顺序有要求吗？
 
-![image](BA1FC057729748FE82C985D22CF84C76)
+![image](pictures/zimu.png)
 
 **遇到的问题**
 
