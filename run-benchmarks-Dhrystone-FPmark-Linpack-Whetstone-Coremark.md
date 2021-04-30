@@ -1,4 +1,4 @@
-## Run three benchmark: Dhrystone, fpmark, audiocodec
+## Run benchmarks: Dhrystone, fpmark, linpack, whetstone, coremark
 
 ### 1. Dhrystone
 
