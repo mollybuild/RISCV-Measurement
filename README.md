@@ -1,2 +1,3 @@
-# 1st-Repo
-my 1st repo, just have a try.
+# RISCV-Measurement
+
+This is a repo for recording and reporting RISCV platform's test and measurement continuously.
