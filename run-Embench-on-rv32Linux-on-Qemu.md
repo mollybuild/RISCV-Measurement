@@ -173,7 +173,7 @@ scp -P 2222 ./embench-iot.tar.gz root@localhost:~/
 ./benchmark_speed.py --target-module run_native
 ```
 
-![image](http://note.youdao.com/yws/res/7136/WEBRESOURCEd5e92816ef4271d669628e1a30692d3a)
+![image](pictures/embench-result.png)
 
 ### 参考资料
 
