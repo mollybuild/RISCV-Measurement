@@ -58,7 +58,7 @@
 
 问题2
 
-![image](EE8961EB9AA14ADB8AD81EE8057E6FF6)
+![image](pictures/t1-1.png)
 
 报错：stdio.h找不到，可能是只gnu tool只构建了newlib版本。需要重新构建gnu tool，并且newlib和linux两个版本都要构建。
 
@@ -75,7 +75,7 @@ https://github.com/sunshaoce/learning-riscv/blob/main/%E5%AE%89%E8%A3%85RISC-V%E
 ```
 
 仍然报错：
-![image](0D09D71CFB844BA493F1C4CD71286D9C)
+![image](pictures/t1-2.png)
 
 报错信息：unknown operand
 
@@ -99,7 +99,7 @@ vec_mul.s:28:   vsetvli t0, t0, e16, m8,tu,mu
 
 编译过程遇到的问题是构建gnu tool 时没有切换到rvv分支就开始构建了，这样编译测试文件会报`unrecognized opcode`。
 
-![image](A98D890F283D4536AC575C6CAD3ECAD8)
+![image](pictures/t1-3.png)
 
 后来从master上切换到rvv-0.9.x分支，构建完编译测试程序还是会报相同的错，可能是这样切换不成功。最后是直接从gh源上clone rvv-0.9.x分支（速度很慢，大概20KiB/s）(`git clone --recursive --depth=1 git@github.com:riscv/riscv-gnu-toolchain.git -b rvv-0.9.x`) 这样构建出来的gnu tool再去编译测试程序，就没有问题了。
 
@@ -111,7 +111,7 @@ spike --isa=RV64gcv pk conv-test
 
 输出结果会写到`RISCV-OUTPUT.TXT`中,但是需要提前新建这个文件，不然结果会报segfualt，如下所示：
 
-![image](E6856CE9981149BFA5BC4F8C5431F741)
+![image](pictures/t1-4.png)
 
 #### 程序结果
 
