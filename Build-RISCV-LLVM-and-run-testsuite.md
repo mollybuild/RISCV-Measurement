@@ -1,10 +1,10 @@
 ## 构建 RISCV LLVM
 
-源码地址：
+**源码地址：**
 
 https://github.com/isrc-cas/rvv-llvm
 
-Prerequiriste:
+**Prerequiriste:**
 
 ```shell
 $ sudo apt update
@@ -12,7 +12,7 @@ $ sudo apt update
 $ sudo apt install cmake ninja-build
 ```
 
-构建的命令如下：
+**构建的命令如下：**
 
 ```shell
 $ git clone https://github.com/isrc-cas/rvv-llvm.git
@@ -34,7 +34,7 @@ $ ninja check
 
 ## 运行LLVM test-suite
 
-1. 编译test-suite，参考官方文档：
+**1. 编译test-suite，参考官方文档：**
 
 https://llvm.org/docs/TestSuiteGuide.html
 
@@ -96,7 +96,7 @@ make: *** [Makefile:130: all] Error 2
 
 MicroBenchmarks/CMakeLists.txt 中注释掉add_subdirectory(XRay)
 
-2. 运行llvm test-suite
+**2. 运行llvm test-suite**
 
 Command:
 
@@ -147,6 +147,105 @@ min    0.000000
 75%    0.004400
 max    230781.792333
 ```
+
+## 交叉编译RISCV的llvm test-suite
+
+**1. 在clang_riscv_linux.cmake中配置工具链信息。**
+
+配置文件目录 rvv-llvm/llvm/projects/llvm-test-suite-main/your-build-dir/clang_riscv_linux.cmake
+
+```shell
+root@e7299bcbf9e1:~/chenxiaoou/rvv-llvm/llvm/projects/llvm-test-suite-main/riscv-build# cat clang_riscv_linux.cmake
+set(CMAKE_SYSTEM_NAME Linux )
+set(triple riscv64-unknown-linux-gnu )
+set(CMAKE_C_COMPILER /root/chenxiaoou/rvv-llvm/build/bin/clang CACHE STRING "" FORCE)
+set(CMAKE_C_COMPILER_TARGET ${triple} CACHE STRING "" FORCE)
+set(CMAKE_CXX_COMPILER /root/chenxiaoou/rvv-llvm/build/bin/clang++ CACHE STRING "" FORCE)
+set(CMAKE_CXX_COMPILER_TARGET ${triple} CACHE STRING "" FORCE)
+set(CMAKE_SYSROOT /root/riscv/linux/sysroot )
+set(CMAKE_C_COMPILER_EXTERNAL_TOOLCHAIN  /root/riscv/linux/)
+set(CMAKE_CXX_COMPILER_EXTERNAL_TOOLCHAIN  /root/riscv/linux/)
+```
+*我尝试用gnu toolchain newlib编译不能通过，用linux lib是可以的*
+
+
+**2. cmake和make**
+
+```shell
+$ cmake -DCMAKE_TOOLCHAIN_FILE=/root/chenxiaoou/rvv-llvm/llvm/projects/llvm-test-suite-main/riscv-build/clang_riscv_linux.cmake  -DCMAKE_C_COMPILER="/root/chenxiaoou/rvv-llvm/build/bin/clang"  ../
+
+$ make
+```
+
+可能有报错如下：
+
+- 找不到crt1.o
+
+```shell
+riscv64-unknown-linux-gnu/bin/ld: cannot find crt1.o: No such file or directory
+```
+
+那么注意看一下CMAKE_SYSROOT指定的目录中是否有crt1.o
+
+- matrix-types-spec编译不过
+
+build下面的程序可能有问题，会卡住：
+SingleSource/UnitTests/CMakeFiles/matrix-types-spec.dir/matrix-types-spec.cpp.o
+
+解决的办法就是暂时不要它，通过修改SingleSource/UnitTests/CMakeFiles/CMakeLists.txt:
+
+```
+# Enable matrix types extension tests for compilers supporting -fenable-matrix.
+check_c_compiler_flag(-fenable-matrix COMPILER_HAS_MATRIX_FLAG)
+if (COMPILER_HAS_MATRIX_FLAG)
+  set_property(SOURCE matrix-types-spec.cpp PROPERTY COMPILE_FLAGS -fenable-matrix)
+else()
+  list(REMOVE_ITEM Source matrix-types-spec.cpp)
+endif()
+++ # Hack for testing riscv.
+++  list(REMOVE_ITEM Source matrix-types-spec.cpp)
+```
+
+**3. 在模拟器上运行交叉编译的test-suite**
+
+- 需要安装dtc
+
+```shell
+apt-get install device-tree-compiler
+```
+
+- ld加上选项-static
+
+在CMakeCache.txt中修改下面的配置项
+
+```shell
+//Flags used by the linker during all build types.
+CMAKE_EXE_LINKER_FLAGS:STRING= -static
+```
+
+
+- 手动运动单个测试用例
+
+```shell
+root@e7299bcbf9e1:~/chenxiaoou/rvv-llvm/llvm/projects/llvm-test-suite-main/riscv-build/SingleSource/Benchmarks/Linpack# spike --isa=RV64gc /root/bin/riscv64-unknown-linux-gnu/bin/pk functionobjects
+```
+注意pk需要是linux/gnu版本的。
+
+有一些可以成功的运行，有一些测试程序需要用到动态链接库的，就会出错。
+
+我试了一下这个程序是可以正确执行的：
+SingleSource/Benchmarks/BenchmarkGame/fannkuch
+
+仿真的命令是：
+
+```shell
+spike --isa=RV64gc /root/bin/riscv64-unknown-linux-gnu/bin/pk fannkuch > fannkuch.result 2>&1
+```
+
+对比参考输出，程序的输出正常。
+
+
+
 
 
 
