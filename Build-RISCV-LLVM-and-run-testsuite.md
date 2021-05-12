@@ -61,7 +61,7 @@ make[2]: *** [MicroBenchmarks/ImageProcessing/Dither/CMakeFiles/Dither.dir/build
 make[1]: *** [CMakeFiles/Makefile2:14633: MicroBenchmarks/ImageProcessing/Dither/CMakeFiles/Dither.dir/all] Error 2
 make: *** [Makefile:130: all] Error 2
 ```
-解决方法是在文件中修改：
+解决方法是在文件test-suite-build/CMakeCache.txt中修改：
 
 CMAKE_C_FLAGS:STRING = -fPIE
 
@@ -103,7 +103,8 @@ MicroBenchmarks/CMakeLists.txt 中注释掉add_subdirectory(XRay)
 Command:
 
 ```shell
-# run test
+# run test in test-suite-build dir. and llvm-lit need in your PATH or use full path. 
+# the last "." represents the test path.
 $ llvm-lit -v -j 1 -o results.json .
 
 # Make sure pandas and scipy are installed. Prepend `sudo` if necessary.
