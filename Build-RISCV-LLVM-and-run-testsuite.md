@@ -153,9 +153,19 @@ max    230781.792333
 
 ## 交叉编译RISCV的llvm test-suite
 
-**1. 在clang_riscv_linux.cmake中配置工具链信息。**
+**1. 新建build目录**
+可以在你的test-suite目录下创建一个riscv-build目录，用于交叉编译.
+例如：
+```
+$ cd ~/chenxiaoou/rvv-llvm/llvm/projects/llvm-test-suite-main/
+$ mkdir riscv-build
+```
+
+**2. 新建clang_riscv_linux.cmake，配置工具链信息。**
 
 配置文件目录 rvv-llvm/llvm/projects/llvm-test-suite-main/your-build-dir/clang_riscv_linux.cmake
+
+在llvm-test-suite-main/riscv-build/目录下新建clang_riscv_linux.cmake，编辑内容如下：
 
 ```shell
 root@e7299bcbf9e1:~/chenxiaoou/rvv-llvm/llvm/projects/llvm-test-suite-main/riscv-build# cat clang_riscv_linux.cmake
@@ -172,9 +182,10 @@ set(CMAKE_CXX_COMPILER_EXTERNAL_TOOLCHAIN  /root/riscv/linux/)
 *我尝试用gnu toolchain newlib编译不能通过，用linux lib是可以的*
 
 
-**2. cmake和make**
+**3. cmake和make**
 
 ```shell
+$ cd ~/chenxiaoou/rvv-llvm/llvm/projects/llvm-test-suite-main/riscv-build
 $ cmake -DCMAKE_TOOLCHAIN_FILE=/root/chenxiaoou/rvv-llvm/llvm/projects/llvm-test-suite-main/riscv-build/clang_riscv_linux.cmake  -DCMAKE_C_COMPILER="/root/chenxiaoou/rvv-llvm/build/bin/clang"  ../
 
 $ make
@@ -209,7 +220,7 @@ endif()
 ++  list(REMOVE_ITEM Source matrix-types-spec.cpp)
 ```
 
-**3. 在模拟器上运行交叉编译的test-suite**
+**4. 在模拟器上运行交叉编译的test-suite**
 
 - 需要安装dtc
 
