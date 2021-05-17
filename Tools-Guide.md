@@ -29,11 +29,11 @@ $ su YOUR-USER-NAME
 $ cd ~
 ```
 
-安装sudo命令，给用户添加sudo权限
+切换回root用户，安装sudo命令，给用户添加sudo权限
 
 ```
-apt update
-apt install sudo
+# apt update
+# apt install sudo
 ```
 在/etc/sudoers中添加一行`YOUR-USER-NAME     ALL=(ALL:ALL) ALL`
 
