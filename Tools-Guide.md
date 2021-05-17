@@ -21,6 +21,7 @@ docker restart YOUR-DOCKER-NAME
 2. 添加docker容器内的用户
 
 docker容器内的root和宿主机的root属于同一个用户，两者的UID均为0。因此虽然在docker容器中，我们还是需要新建普通用户，并使用普通用户来运行程序。
+（YOUR-USER-NAME代表你自己的用户名）
 
 ```
 $ adduser YOUR-USER-NAME
@@ -34,12 +35,12 @@ $ cd ~
 apt update
 apt install sudo
 ```
-在/etc/sudoers中添加一行：
+在/etc/sudoers中添加一行`YOUR-USER-NAME     ALL=(ALL:ALL) ALL`
 
 ```
 # User privilege specification
 root    ALL=(ALL:ALL) ALL
-+ cxo     ALL=(ALL:ALL) ALL
+YOUR-USER-NAME     ALL=(ALL:ALL) ALL
 ```
 
 
