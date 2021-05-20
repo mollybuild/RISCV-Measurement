@@ -10,6 +10,10 @@ me YOUR-DOCKER-NAME ubuntu:20.04 /bin/bash
 
 之后连接
 ```shell
+# Attach to the default shell of a running container
+docker attach YOUR-DOCKER-NAME
+
+# Access a shell and run custom commands inside a container. Everytime you use this command will create a new bash shell.
 docker exec -it YOUR-DOCKER-NAME /bin/bash
 ```
 
