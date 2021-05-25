@@ -39,7 +39,6 @@ $ git clone https://github.com/riscv/riscv-gnu-toolchain
 $ cd riscv-gnu-toolchain
 $ git submodule update --init --recursive
 $ cd ..
-$ cp riscv-gnu-toolchain zfinx -r && cd zfinx
 ```
 
 #### for b-ext
