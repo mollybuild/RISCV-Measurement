@@ -69,7 +69,7 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-Embench-on-rv32L
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmarks-Dhrystone-FPmark-Linpack-Whetstone-Coremark.md
 ```
 
-## 三.性能工具的使用
+## 三. 性能工具的使用
 
 ### gcov和linux perf工具的使用
 
@@ -78,12 +78,12 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmarks-Dhrys
 参考B站报告。
 ```
 
-## 四.测试工作的自动化
+## 四. 测试工作的自动化
 
 目前实现了RISCV GNU Toolchain回归测试的自动运行脚本，可以自动的安装依赖、下载GNU源码、构建、运行回归测试，这个过程将针对目前的B、K、V、P、Zfinx都会进行一遍。
 脚本位置：scripts/runGNUforInsExts.sh 
 
-## 公开报告
+## 五. 公开报告
 
 1. 20201204-LLVM测试框架介绍
 ```
