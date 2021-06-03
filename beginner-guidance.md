@@ -86,7 +86,7 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmarks-Dhrys
 ## 公开报告
 
 1. 20201204-LLVM测试框架介绍
-
+```
 幻灯片或资料链接：
 
 https://github.com/isrc-cas/PLCT-Open-Reports
@@ -94,15 +94,17 @@ https://github.com/isrc-cas/PLCT-Open-Reports
 视频或专栏文章链接：
 
 https://www.bilibili.com/video/BV1MK4y1L7jw
+```
 
 2. 20210113-Csmith vs YARPGen
-
+```
 幻灯片或资料链接：
 
 https://www.bilibili.com/video/BV1rt4y1z7h4
+```
 
 3. 20210310 - GNU GCC Testsuite
-
+```
 内容简介：GNU GCC Testsuite介绍和运行方法
 
 幻灯片或资料链接：
@@ -112,9 +114,10 @@ https://github.com/isrc-cas/PLCT-Open-Reports/blob/master/20210310-GNU-GCC-Tests
 视频或专栏文章链接：
 
 https://www.bilibili.com/video/BV1EV411Y7Ne
+```
 
 4. 20210331 - 如何使用gcov和linux-perf工具抓热点代码
-
+```
 幻灯片或资料链接：
 
 https://github.com/isrc-cas/PLCT-Open-Reports/blob/master/20210331-如何使用gcov和linux-perf工具抓热点代码-陈小欧.pdf
@@ -122,9 +125,10 @@ https://github.com/isrc-cas/PLCT-Open-Reports/blob/master/20210331-如何使用g
 视频或专栏文章链接：
 
 https://www.bilibili.com/video/BV1MK4y1m7Uj
+```
 
 5. 20210512 - Perf更详细的介绍 - 陈小欧
-
+```
 报告题目：Perf更详细的介绍
 
 报告时间：20210512
@@ -142,3 +146,4 @@ https://github.com/isrc-cas/PLCT-Open-Reports/blob/master/20210512-常用perf命
 视频或专栏文章链接：
 
 https://www.bilibili.com/video/BV1hK4y1A7U4
+```
