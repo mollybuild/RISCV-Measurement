@@ -200,6 +200,7 @@ riscv64-unknown-linux-gnu/bin/ld: cannot find crt1.o: No such file or directory
 ```
 
 那么注意看一下CMAKE_SYSROOT指定的目录中是否有crt1.o
+或者检查一下riscv gcc所在的bin目录是否添加到了PATH。
 
 - matrix-types-spec编译不过
 
