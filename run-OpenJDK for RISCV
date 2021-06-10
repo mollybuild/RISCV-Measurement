@@ -72,21 +72,6 @@ make: *** [/home/cxo/repos/jdk11u/make/Init.gmk:186: run-test-tier1] Error 2
 
 ```
 
-
-### 查看makefile
-
-make/Help.gmk
-
-make/Main.gmk
-
-make/Runtests.gmk
-
-make/RuntestsPrebuiltSpec.gmk
-
-make/RunTestsPrebuilt.gmk
-
-test/make/TestCopyFiles.gmk
-
 ### 参考
 
 [How to cross compile OpenJDK for Arm32?](http://mail.openjdk.java.net/pipermail/zero-dev/2014-December/000538.html)
