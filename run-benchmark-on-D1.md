@@ -471,7 +471,7 @@ lu-sml-20*2_50
 
 结果存放在 builds/linux64/gcc-cross-linux/logs/linux64.gcc-cross-linux.log
 
-![image](pictures/0707.png)
+![image](pictures/0707.jpg)
 
 这个结果没有Mark分数，需要Mark分数的过，运行下面的命令：
 
