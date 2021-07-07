@@ -4,7 +4,7 @@
 1. 创建docker, 并挂载/usr/Downloads到host
 
 ```shell
-$ docker run -P --expose 80 -v $HOME/dock/Downloads:/usr/Downloads --privileged=true -it --na
+$ docker run -P --expose 80 -v $HOME/dock/Downloads:/usr/Downloads --privileged=false -it --na
 me YOUR-DOCKER-NAME ubuntu:20.04 /bin/bash
 ```
 
