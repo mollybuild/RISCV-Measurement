@@ -449,6 +449,12 @@ $ make build
 
 - 在D1上运行fpmark
 
+这里有一个比较tricky的地方，因为运行fpmark需要用到size工具，这个是gnu工具链中的一个工具，因为我这里是在x86上交叉编译fpmark的，所以在fpmark构建配置中指定的size工具是/home/cxo/temp/riscv/riscv64-unknown-linux-gnu-size(就是我x86机器上的)。这里我就创建了一个软连接指向本系统上的size工具：
+
+```shell
+$ sudo ln -snf /home/cxo/temp/riscv/riscv64-unknown-linux-gnu-size /usr/bin/size
+```
+
 ```shell
 $ make run-all
 ```
