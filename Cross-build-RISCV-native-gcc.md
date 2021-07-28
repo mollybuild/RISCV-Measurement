@@ -1,7 +1,9 @@
 ### 在x86/linux64上交叉编译RISCV native gcc
 
 以下步骤是在x86/linux64上进行的，交叉编译一个RISCV native gcc。在交叉编译之前，你的x86/linux64机器上应该有riscv的交叉工具链（如果没有，请先构建riscv-gnu-toolchain）。
+
 注意x86上用于交叉编译的工具链glic版本要和D1开发板上的glibc版本一致。
+
 这里的步骤目前适用于编译riscv-gcc项目，整个riscv-gnu-toolchain项目还没有尝试。
 
 0. 安装依赖软件：
