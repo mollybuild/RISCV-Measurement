@@ -30,7 +30,7 @@ $ cd riscv-gnu-toolchain/riscv-gcc
 $ contrib/download_prerequisites
 ```
 
-2. 在riscv-gnu-toolchain/riscv-gcc下新建build目录，再进行configure/make/make install。
+3. 在riscv-gnu-toolchain/riscv-gcc下新建build目录，再进行configure/make/make install。
 
 *整个riscv-gnu-toolchain不知道目前是否支持交叉编译riscv native工具*
 
@@ -58,6 +58,8 @@ $ ln -snf $HOME/opt/rv64_linux/bin/riscv64-unknown-linux-gnu-gcc $HOME/opt/rv64_
 ```
 
 将install目录$HOME/RISCV64/native打包拷贝到D1上，又遇到glibc版本不一致的问题，所以这里要注意x86上用于交叉编译的工具链glic版本要和D1开发板上的glibc版本一致。
+
+4. 将编译好的gcc binary拷贝到D1开发板上，做一些验证
 
 编译完成之后，把$HOME/RISCV64/native打包拷贝到D1上，在D1开发板的native/bin目录下执行`./gcc -v`，看到gcc的版本，则gcc可以运行。
 现在试着用gcc进行编译，编译一个fibo.c文件。报错如下：
