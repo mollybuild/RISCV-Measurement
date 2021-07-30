@@ -180,7 +180,7 @@ sudo apt install dejagnu
 
 问题3：make check能够成功执行gcc/g++的回归测试，在执行gmp测试时报错，报错如下：
 
-![image](A8A7C177534541199A01CEC6666AC762)
+![image](pictures/gmperror.png)
 
 问题4：回归测试用有需要用到binutils工具链的，这里我没有编译，有下面的报错：（报错在build-native2/gcc/testsuite/gcc/gcc.log里查看）
 ```shell
