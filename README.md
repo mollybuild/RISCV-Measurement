@@ -23,7 +23,6 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-riscv-gnu-toolch
 
 ### RISCV LLVM的构建和回归测试
 
-```
 1. 构建RISCV LLVM并运行回归测试
 
 https://github.com/mollybuild/RISCV-Measurement/blob/master/Build-RISCV-LLVM-and-run-testsuite.md
@@ -31,11 +30,9 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/Build-RISCV-LLVM-and
 2. 在LLVM test-suite中添加测试用例
 
 【TODO】
-```
 
 ### 使用RISCV GCC/LLVM编译小程序并在模拟器上运行
 
-```
 1. 使用RISCV GCC/LLVM编译小程序并在模拟器上运行
 
 【TODO】
@@ -49,40 +46,32 @@ https://zhuanlan.zhihu.com/p/344502147
 我自己对这个过程的复现：
 
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-OpenJDK%20for%20RISCV.md
-```
 
 ## 二. RISCV平台的测评工作
 
 这一块工作主要是要掌握常用的benchmark：Embench, Dhrystone, fpmark, linpack, whetstone, coremark
 
 ### 复现CodeSize测评
-```
+
 【TODO】
-```
 
 ### Embench的介绍和在RISCV模拟器上的运行
 
-```
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-Embench-on-rv32Linux-on-Qemu.md
-```
 
 ### 熟悉Dhrystone, fpmark, linpack, whetstone, coremark
 
-```
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmarks-Dhrystone-FPmark-Linpack-Whetstone-Coremark.md
-```
 
 ## 三. 性能工具的使用
 
 ### gcov和linux perf工具的使用
 
-```
 目前主要涉及到的工具有：gcov，Linux perf，linux性能可观测工具集。
 参考B站报告。
 
 Linux性能可观测工具图示:
 https://github.com/mollybuild/RISCV-Measurement/blob/master/Linux-Performance-Observability-Tools.md
-```
 
 ## 四. 测试工作的自动化
 
@@ -93,27 +82,19 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/Linux-Performance-Ob
 
 ### 在x86/Linux64上交叉编译Demo程序，在D1开发板上运行
 
-```
 https://github.com/mollybuild/RISCV-Measurement/blob/master/Cross-compile-a-demo-and-run-on-D1.md
-```
 
 ### 构建RISCV native GCC，并在全志D1 RISCV开发板上进行回归测试
 
-```
 https://github.com/mollybuild/RISCV-Measurement/blob/master/Cross-build-riscv-native-gcc-on-X86Linux64-and-make-check-on-D1.md
-```
 
 ### 在D1上运行常用的Benchmark：Embench, Dhrystone, fpmark, linpack, whetstone, coremark
 
-```
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmark-on-D1.md
-```
 
 ## 六. 常用工具的使用
 
-```
 https://github.com/mollybuild/RISCV-Measurement/blob/master/Tools-Guide.md
-```
 
 ## 六. 公开报告
 
