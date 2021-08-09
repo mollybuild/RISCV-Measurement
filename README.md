@@ -2,7 +2,7 @@
 
 这里总结了我在PLCT实验室做的有关RISCV测试测评方向的工作，也可以作为新员工入门的热身训练。
 
-## 一. RISCV平台下各类编译工具的构建及运行回归测试
+## 一. RISCV各类编译工具的构建及运行回归测试
 
 主要掌握RISCV GNU Toolchain，llvm，OpenJDK for RISCV的构建和回归测试。
 
@@ -41,11 +41,15 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/Build-RISCV-LLVM-and
 
 【TODO】
 
-### OpenJDK for RISCV的构建
+2. OpenJDK for RISCV的构建
 
 【Java on RISC-V】交叉编译OpenJDK11 for RV32G（ZERO VM）
 
 https://zhuanlan.zhihu.com/p/344502147
+
+我自己对这个过程的复现：
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/run-OpenJDK%20for%20RISCV.md
 ```
 
 ## 二. RISCV平台的测评工作
@@ -76,14 +80,43 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmarks-Dhrys
 ```
 目前主要涉及到的工具有：gcov，Linux perf，linux性能可观测工具集。
 参考B站报告。
+
+Linux性能可观测工具图示:
+https://github.com/mollybuild/RISCV-Measurement/blob/master/Linux-Performance-Observability-Tools.md
 ```
 
 ## 四. 测试工作的自动化
 
 目前实现了RISCV GNU Toolchain回归测试的自动运行脚本，可以自动的安装依赖、下载GNU源码、构建、运行回归测试，这个过程将针对目前的B、K、V、P、Zfinx都会进行一遍。
-脚本位置：scripts/runGNUforInsExts.sh 
+脚本位置：scripts/runGNUforInsExts.sh
 
-## 五. 公开报告
+## 五. 在全志哪吒D1 RISCV开发板上的工作
+
+### 在x86/Linux64上交叉编译Demo程序，在D1开发板上运行
+
+```
+https://github.com/mollybuild/RISCV-Measurement/blob/master/Cross-compile-a-demo-and-run-on-D1.md
+```
+
+### 构建RISCV native GCC，并在全志D1 RISCV开发板上进行回归测试
+
+```
+https://github.com/mollybuild/RISCV-Measurement/blob/master/Cross-build-riscv-native-gcc-on-X86Linux64-and-make-check-on-D1.md
+```
+
+### 在D1上运行常用的Benchmark：Embench, Dhrystone, fpmark, linpack, whetstone, coremark
+
+```
+https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmark-on-D1.md
+```
+
+## 六. 常用工具的使用
+
+```
+https://github.com/mollybuild/RISCV-Measurement/blob/master/Tools-Guide.md
+```
+
+## 六. 公开报告
 
 1. 20201204-LLVM测试框架介绍
 ```
@@ -148,3 +181,19 @@ https://github.com/isrc-cas/PLCT-Open-Reports/blob/master/20210512-常用perf命
 https://www.bilibili.com/video/BV1hK4y1A7U4
 ```
 
+6. 20210626 - PLCT RISC-V Shanghai Day
+```
+报告题目：RISCV GNU Toolchain和LLVM回归测试的介绍
+
+报告时间：20210626
+
+报告人：陈小欧
+
+隶属项目：测试测评
+
+内容简介：RISCV GNU Toolchain和LLVM回归测试的介绍
+
+幻灯片或资料链接：
+
+https://www.bilibili.com/video/BV1x64y1b77R
+```
