@@ -12,15 +12,14 @@
 
 ### RISCV Gnu Toolchain的构建和回归测试
 
-```
+
 1. 构建zfinx分支并运行回归测试
 
-<https://github.com/mollybuild/RISCV-Measurement/blob/master/run-riscv-gnu-toolchain-testsuite.md>
+https://github.com/mollybuild/RISCV-Measurement/blob/master/run-riscv-gnu-toolchain-testsuite.md
 
 2. 分别构建B、K、V扩展的分支，并运行回归测试
 
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-riscv-gnu-toolchain-testsuite-for-BKV-extension.md
-```
 
 ### RISCV LLVM的构建和回归测试
 
