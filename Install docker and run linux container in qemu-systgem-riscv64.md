@@ -29,7 +29,7 @@ $ sudo apt install ./docker-19.03.8-dev_riscv64.deb
 
 ![image](pictures/27-1.png)
 
-![image](pictures/27-2png)
+![image](pictures/27-2.png)
 
 3. docker riscv/debian image 并启动容器
 
@@ -41,4 +41,4 @@ $ docker run -it riscv64/debian:experimental /bin/bash
 
 容器启动成功会有如下的显示：
 
-![image](pictures/27-3png)
+![image](pictures/27-3.png)
