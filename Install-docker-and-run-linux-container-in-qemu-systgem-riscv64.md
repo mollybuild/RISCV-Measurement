@@ -19,7 +19,7 @@ $ ./run_riscvVM.sh
 ```
 $ wget https://github.com/carlosedp/riscv-bringup/releases/download/v1.0/docker-v19.03.8-dev_riscv64.deb
 
-$ sudo apt install ./docker-19.03.8-dev_riscv64.deb
+$ sudo apt install ./docker-v19.03.8-dev_riscv64.deb
 ```
 安装完之后重启虚拟机。
 
