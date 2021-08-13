@@ -1,7 +1,5 @@
 ## 在qemu riscv64虚拟机中安装docker并运行riscv linux
 
-参考：https://carlosedp.medium.com/docker-containers-on-risc-v-architecture-5bc45725624b
-
 下面的步骤在x86/Linux64下进行，需要你的机器上已经安装qemu-system-riscv64.
 
 1. 下载基于Debian的RISCV虚拟机镜像。
@@ -42,3 +40,7 @@ $ docker run -it riscv64/debian:experimental /bin/bash
 容器启动成功会有如下的显示：
 
 ![image](pictures/27-3.png)
+
+参考资料：
+
+1. Docker Containers on RISC-V Architecture <https://carlosedp.medium.com/docker-containers-on-risc-v-architecture-5bc45725624b>
