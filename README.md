@@ -92,6 +92,10 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/Cross-build-riscv-na
 
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmark-on-D1.md
 
+### LLVM RISCV64 native工具的构建，并在D1开发板上运行LLVM test-suite
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/run-LLVM-testsuite-on-D1.md
+
 ## 六. 常用工具
 
 1. 常用工具的使用
