@@ -138,7 +138,7 @@ Wifi的设置方法是：
 # yum install yajl-devel
 ```
 
-1. 下载并安装go
+2. 下载并安装go
 
 目前还没有官网的go for RISCV的安装包，我们是从下面的github仓库里找到了prebuilt的安装包：
 
@@ -156,7 +156,7 @@ https://github.com/carlosedp/riscv-bringup/releases
 go version go1.17 linux/riscv64
 ```
 
-2. 下载docker安装包
+3. 下载docker安装包并安装
 
 目前还没有官网的docker for RISCV的安装包，我们是从下面的github仓库里找到了prebuilt的安装包：
 
@@ -186,7 +186,7 @@ https://github.com/carlosedp/riscv-bringup/releases/download/v1.0/docker-v20.10.
 # cp -r docker-19.03/docker /etc/
 ```
 
-3. 安装CNI的插件
+4. 安装CNI的插件
 
 ```shell
 # git clone https://github.com/containernetworking/plugins.git
@@ -222,7 +222,7 @@ EOF
 # source /etc/profile
 ```
 
-4. 设置LD_LIBRARY_PATH
+5. 设置LD_LIBRARY_PATH
 
 ```shell
 # echo 'export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"' >> /etc/profile
@@ -230,7 +230,7 @@ EOF
 # /sbin/ldconfig
 ```
 
-5. 启动docker
+6. 启动docker
 
 上面的步骤都做完了之后，建议重启D1开发板，IP会改变，Xshell相应的SSH连接会话IP需要重新设置。（先用串口会话看IP，再设置SSH IP）
 
