@@ -19,7 +19,7 @@ $ sudo apt install cmake ninja-build
 ```shell
 $ git clone https://github.com/isrc-cas/rvv-llvm.git
 
-$ cd `llvm project`
+$ cd rvv-llvm
 
 $ mkdir build && cd build
 
