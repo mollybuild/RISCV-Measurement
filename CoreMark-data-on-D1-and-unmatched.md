@@ -1,8 +1,10 @@
-## 步骤
+# 在D1上和unmatched上测Coremark
 
-将之前在x86上已经编译好的coremark v1.0拷贝到D1/oE上，执行:
+coremark版本： v1.0 官网下载
 
 ### 在D1/oE上测试
+
+将之前在x86上已经编译好的coremark v1.0拷贝到D1/oE上，执行:
 
 oE系统信息：
 ```
