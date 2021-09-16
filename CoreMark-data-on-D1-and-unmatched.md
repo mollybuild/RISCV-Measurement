@@ -1,3 +1,5 @@
+# 在D1上和unmatched上测Coremark
+
 ## 步骤
 
 将coremarkv1.0拷贝到被测机器上，在coremark_v1.0目录下新建rv64目录，将linux64/下的文件拷贝到rv64目录下，做相应的修改。
