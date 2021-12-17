@@ -1,0 +1,10 @@
+--- dhry.orig.h 2021-12-17 09:43:38.033198166 +0800
++++ dhry.h  2021-06-08 17:07:02.810680763 +0800
+@@ -370,6 +370,7 @@
+ #include <sys/types.h>
+ #include <sys/times.h>
+  /* for "times" */
++#define HZ 60
+ #endif
+
+ #define Mic_secs_Per_Second 1000000.0
