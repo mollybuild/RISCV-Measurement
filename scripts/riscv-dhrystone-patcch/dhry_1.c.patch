@@ -1,0 +1,11 @@
+--- dhry_1.orig.c   2021-12-17 09:43:38.033198166 +0800
++++ dhry_1.c    2021-06-08 16:59:24.453361564 +0800
+@@ -45,7 +45,7 @@ Enumeration Func_1 ();
+
+ #ifdef TIMES
+ struct tms time_info;
+-extern int times ();
++extern clock_t times ();
+  /* see library function "times" */
+ #define Too_Small_Time (2*HZ)
+  /* Measurements should last at least about 2 seconds */
