@@ -21,7 +21,7 @@ We need replace config files for specinvoke, make-3.80, tar-1.15.1, and the conf
 
 #### 2. undefined reference to `__alloca'
 
-报错信息：
+error information:
 
 ```
 glob.c:(.text+0x126e): undefined reference to `__alloca'
@@ -30,16 +30,16 @@ glob.c:(.text+0x126e): undefined reference to `__alloca'
 collect2: error: ld returned 1 exit status
 ```
 
-解决方法：
+solution:
 
-make-3.80/glob/glob.c的209行改为：
+modify make-3.80/glob/glob.c line 209：
 ```
 #if !defined __alloca && defined __GNU_LIBRARY__
 ```
 
 #### 3. undefined reference to `__stat'
 
-报错信息：
+error information:
 
 ```
 linking make...
@@ -54,9 +54,9 @@ glob.c:(.text+0x1274): undefined reference to `__stat'
 collect2: error: ld returned 1 exit status
 ```
 
-解决方法：
+solution
 
-修改make-3.80/glob/glob.c：
+modify make-3.80/glob/glob.c：
 ```
 # if _GNU_GLOB_INTERFACE_VERSION == GLOB_INTERFACE_VERSION 
 ```
@@ -65,9 +65,9 @@ to
 # if _GNU_GLOB_INTERFACE_VERSION >= GLOB_INTERFACE_VERSION
 ```
 
-#### 4. format不兼容
+#### 4. format incompatible
 
-报错信息：
+error information: 
 
 ```
 md5sum.c: In function 'main':
@@ -81,9 +81,9 @@ md5sum.c:682:15: warning: format '%X' expects argument of type 'unsigned int', b
 make: *** [md5sum.o] Error 1
 ```
 
-解决方法：
+solution:
 
-修改specmd5sum/md5sum.c：
+modify specmd5sum/md5sum.c：
 ```
 printf ("%08X", size);
 ```
@@ -94,7 +94,7 @@ printf ("%08lX", size);
 
 #### 5. error: conflicting types for 'getline'
 
-解决方法：
+error information
 
 ```
 sed -i "s/getline/getline1/g" `grep getline -rl $HOME/spec/cpu2000/tools/src/specmd5sum`
@@ -102,7 +102,7 @@ sed -i "s/getline/getline1/g" `grep getline -rl $HOME/spec/cpu2000/tools/src/spe
 
 #### 6. fatal error: getline1.h: No such file or directory
 
-上面改了specmd5sum的源码，然后出现了这个错误。
+After modifying specmd5sum，this error comes up.
 
 ```
 gcc -DHAVE_CONFIG_H    -I/home/xxx/spec/cpu2000/tools/output/include   -I. -Ilib  -c -o md5sum.o md5sum.c
@@ -113,7 +113,9 @@ compilation terminated.
 make: *** [md5sum.o] Error 1
 ```
 
-重命名lib/getline.h lib/getline.c
+solution:
+
+rename lib/getline.h lib/getline.c to lib/getline1.h and lib/getline1.c
 
 #### 7. error: conflicting types for 'getdelim'
 
@@ -122,7 +124,7 @@ make: *** [md5sum.o] Error 1
 
 #### 8. make: *** No rule to make target <command-line>', needed byminiperlmain.o’. Stop
 
-perl编译中出现上面的报错，解决方法是将perl-5.8.7/makefile和perl-5.8.7/x2p/makefile中包含<command-line>的行删除掉。
+If this error occurs when building perl，the solution is delete lines contains <command-line> in file perl-5.8.7/makefile and perl-5.8.7/x2p/makefile.
 
 然后不要直接执行buildtools，这样又会重新配置，重新生成makefile，而是手动在perl-5.8.7目录下执行：
 ```
