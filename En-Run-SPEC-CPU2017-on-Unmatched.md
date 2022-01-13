@@ -1,25 +1,16 @@
-# 在Qemu Fedora for RV64中运行SPEC CPU 2017
+# How to install and run SPEC CPU2017 on Hifive unmatched
 
-### SPEC 2017 对系统的要求
+### CPU2017 system requirements 
 
   - 1 to 2 GB of main memory to run SPECrate (per copy); 16 GB for SPECspeed.
   - 250 GB disk space is recommended; a minimal installation needs 10 GB.
   - C, C++, and Fortran compilers (or a set of pre-compiled binaries from another CPU 2017 user).
   A variety of chips and operating systems are supported.
 
-### 启动Qemu/Fedora for RV64
-
-### 虚机的硬件资源
-
-memory：4G
-
-硬盘大小: 250G
-
-对镜像Fedora-Minimal-Rawhide-20200108.n.0-sda.raw进行扩容。
-
-## SPEC CPU2017
+## Building toolset
 
 SPEC CPU的运行需要一些工具集，例如spectar、specperl等等，其实就是对常用工具的一些封装，但是必须使用spec提供的版本。但是SPEC官方并不支持RISCV架构，因此需要我们自己来编译spec的工具集。官网上有相应的指导文档：
+SPEC CPU running process need some tools, like spectar,specperl etc. These tools 
 
 https://www.spec.org/cpu2017/Docs/tools-build.html
 
