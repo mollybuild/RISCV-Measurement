@@ -124,33 +124,20 @@ rename lib/getline.h lib/getline.c to lib/getline1.h and lib/getline1.c
 
 #### 8. make: *** No rule to make target <command-line>', needed byminiperlmain.o’. Stop
 
-If this error occurs when building perl，the solution is delete lines contains <command-line> in file perl-5.8.7/makefile and perl-5.8.7/x2p/makefile.
+Can't fix this error, the walk-around is to replace perl-5.8.7 with perl-5.12.3 in SPEC CPU2006 toolset.
 
-然后不要直接执行buildtools，这样又会重新配置，重新生成makefile，而是手动在perl-5.8.7目录下执行：
-```
-/home/xxx/spec/cpu2000/tools/output/bin/make
-```
-
-然后，又出现了如下错误：
-![image](pictures/t33-2.png)
-
-我尝试采用软链接fake的方式，参考https://bugs.gentoo.org/168312的comment4，需要大量的fake，并且还引发了下面的问题：
-
-![image](pictures/t33-3.png)
-
-暂时解决不了这个问题。
-
-目前的办法是将CPU2006的perl-5.12.3的源码拿来代perl-5.8.7，另外还需要注释掉buildtools中的下面一行：
+In addition, need to  comment this line in buildtools script.
 ```
 # [ -f $i/spec_do_no_tests ] || ($MYMAKE test; testordie "error running $i test suite")
 ```
-然后再执行buildtools就可以成功了：
+
+Then running buildtools will be OK：
 
 ![image](pictures/t33-4.png)
 
+## Packagetools and install
 
-## Pakagetools and install
-
+After building toolset successfully，then we need to package the toolset and install SPEC CPU 2000. The commands are as following:
 ```
 $ cd $SPEC
 $ source shrc
@@ -159,45 +146,21 @@ $ export SPEC_INSTALL_NOCHECK=1
 $ ./install.sh -u linux-riscv64
 ```
 
-
 ## Running CPU2000
 
-#### Round 1
-
+INT RATE
 ```
-runspec --config linux-riscv64.cfg -n 1 -I --noreportable int
+runspec --config linux-riscv64.cfg -n 1 --noreportable --rate --users 4 int
 ```
-
+INT SPEED
 ```
-                                   Estimated                     Estimated
-                   Base      Base      Base      Peak      Peak      Peak
-   Benchmarks    Ref Time  Run Time   Ratio    Ref Time  Run Time   Ratio
-   ------------  --------  --------  --------  --------  --------  --------
-   164.gzip          1400   584       240    *
-   175.vpr           1400   531       264    *
-   176.gcc           1100   295       373    *
-   181.mcf           1800   775       232    *
-   186.crafty        1000        --          X
-   197.parser        1800   789       228    *
-   252.eon           1300        --          X
-   253.perlbmk       1800        --          X
-   254.gap           1100     4.19           X
-   255.vortex        1900        --          X
-   256.bzip2         1500   522       288    *
-   300.twolf         3000   673              X
-   ========================================================================
-   164.gzip          1400   584       240    *
-   175.vpr           1400   531       264    *
-   176.gcc           1100   295       373    *
-   181.mcf           1800   775       232    *
-   186.crafty                                X
-   197.parser        1800   789       228    *
-   252.eon                                   X
-   253.perlbmk                               X
-   254.gap                                   X
-   255.vortex                                X
-   256.bzip2         1500   522       288    *
-   300.twolf                                 X
-   Est. SPECint_base2000                   --
-   Est. SPECint2000                                                      --
+runspec --config linux-riscv64.cfg -n 1 --noreportable int
+```
+FP RATE
+```
+runspec --config linux-riscv64.cfg -n 1 --noreportable --rate --users 4 fp
+```
+FP SPEED
+```
+runspec --config linux-riscv64.cfg -n 1 --noreportable fp
 ```
