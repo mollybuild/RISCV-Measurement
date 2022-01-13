@@ -165,7 +165,7 @@ FP SPEED
 runspec --config linux-riscv64.cfg -n 1 --noreportable fp
 ```
 
-## Running CPU2000
+## Config file
   
 The config file we use is as bellow.
   
