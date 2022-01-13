@@ -1,40 +1,40 @@
-# 如何在Hifive Unmatched开发板上安装SPEC CPU 2006
+# How to install and run SPEC CPU2006 on Hifive Unmatched
 
-与SPEC CPU2017类似，CPU2006官方不提供对RISCV平台的支持，因为我们需要自己编译CPU2006中的toolset，参考官方的文档：
+Similar to SPEC CPU2017, CPU2006 don't support RISCV officially, so we need to build toolset by ourselves. Official document can be referenced:
 
 [Building the SPEC CPU2006 Tool Suite](https://www.spec.org/cpu2006/Docs/tools-build.html)
 
-我们编译toolset并安装运行CPU2006的硬软件环境如下：
+The RISCV platform we use is described as bellow:
 
-- 开发板：Hifive Unmatched
-- 内存：16G
-- 硬盘：1T SSD
-- OS：Ubuntu21.04
+- Board: Hifive Unmatched
+- Memory: 16G
+- Storage: 1T SSD
+- OS: Ubuntu21.04
 - GCC：10.3.0
 - Glibc：2.33
 
-### 编译toolset过程中的报错和解决方法
+### Error when building toolset and solutions 
 
 #### more undefined references to __alloca' follow
 
-解决方法：
+solution:
 
-修改src/make-3.82/glob/glob.c第211行：
+modify src/make-3.82/glob/glob.c line 211:
 
 ```
 - #if !defined __alloca && !defined __GNU_LIBRARY__
 + #if !defined __alloca && defined __GNU_LIBRARY__
 ```
 
-#### Building tar时报`'gets' undeclared here`
+#### `'gets' undeclared here` when building tar
 
-错误说明：
+cause:
 
-由于依赖库版本升级造成的代码兼容性问题。
+Code compatibility issues due to dependency library version upgrades. 
 
-解决方法：
+solution：
 
-修改下面两个文件
+modify these two files:
 
 src/specsum/gnulib/stdio.in.h
 
@@ -56,11 +56,11 @@ src/tar-1.25/gnu/stdio.in.h
  # if @REPLACE_FOPEN@
 ```
 
-### undefined reference to `pow` 等等
+### undefined reference to `pow` etc.
 
 export PERLFLAGS="-A libs=-lm -A libs=-ldl -A libs=-lc -A ldflags=-lm -A cflags=-lm -A ccflags=-lm"
 
-### perl Configure 需要打的patch
+### perl Configure need patch
 
 ```
 --- /mnt/tools/src/perl-5.12.3/Configure        2011-03-03 17:29:36.000000000 -00
@@ -123,14 +123,16 @@ export PERLFLAGS="-A libs=-lm -A libs=-ldl -A libs=-lc -A ldflags=-lm -A cflags=
  '');;
 ```
 
-参考：https://github.com/Perl/perl5/issues/14491
+refer to：https://github.com/Perl/perl5/issues/14491
 
 
 ### packagetools linux-riscv64
 
-首先，新建$SPEC/tools/bin/linux-riscv64目录，并在其中新建description文件。
+After building toolset successfully, next we need to package the toolset.
 
-然后，回到$SPEC目录，执行：
+first, make directory $SPEC/tools/bin/linux-riscv64, and create a file named description.
+
+then back to path $SPEC and execute:
 
 ```
 $  ./bin/packagetools linux-riscv64
@@ -138,19 +140,21 @@ $  ./bin/packagetools linux-riscv64
 
 ### Installation of linux-riscv64 aborted.
 
-在安装CPU2006的过程中会进行perl工具的回归测试，可以在运行install脚本之前`export SPEC_INSTALL_NOCHECK=1 `跳过测试部分。不过其中一些Failed也是可以解决的。
+Installation of SPEC CPU 2006 will fail because several perl tests can't pass. The walkaround is set  `export SPEC_INSTALL_NOCHECK=1 ` before installation to skip perl verification.
 
-- Perl的测试用例numconvert.t的报错和解决方法
+Here we also record some issues and their solutions.
 
-对于numconvert.t报错可以加上`-A ccflags=-fwrapv`选项编译，即可通过：
+- Perl test case numconvert.t failure
 
+solution: add compiler option `-A ccflags=-fwrapv`
 ```
 $ export PERLFLAGS="-A ccflags=-fwrapv"
 ```
 
-- Perl的测试用例Local.t的报错和解决方法
+- Perl test case Local.t Failure
 
-Local.t可能会报下面的错误，解决方法是按下面的patch修改perl-5.12.3/ext/Time-Local/t/Local.t文件
+Local.t may has this error, the solution is to modify perl-5.12.3/ext/Time-Local/t/Local.t as the patch bellow.
+
 ![image](pictures/t32-1.png)
 
 ```shell
@@ -205,25 +209,26 @@ Local.t可能会报下面的错误，解决方法是按下面的patch修改perl-
  }
 ```
 
-### Perl的测试用例DynaLoader.t的报错和解决方法
+### Perl test case DynaLoader.t failure
 
-解决方法
+solution:
 
 ```
 export PERLFLAGS="$PERLFLAGS -Dlibpth=/usr/lib/riscv64-linux-gnu"
 ```
 
-### 直接绕过安装时的校验
+### Skip verification
 
-前面说过，安装时的perl test检查也是可以直接绕过的。就是在构建完toolset，并且packagetools打包完之后，设置一下环境变量：
+As mentioned ahead, perl test can be skiiped by setting SPEC_INSTALL_NOCHECK.
 ```
 export SPEC_INSTALL_NOCHECK=1 
 ```
-然后再运行install.sh脚本就可以安装了，绕过校验和检查。
 
-### unmatched上编译toolset并安装CPU2006的步骤总结
+Now we can execute install.sh successfully.
 
-首先设置PERLFLAGS（参数供参考），执行buildtools脚本进行toolset的编译。
+### Conclusion about build and install CPU2006
+
+First set PERLFLAGS, then execute buildtools.
 
 ```
 $ export PERLFLAGS="-A libs=-lm -A libs=-lc -A ldflags=-lm -A cflags=-lm -A ccflags=-lm -A ccflags=-fwrapv -Dlibpth=/usr/lib/riscv64-linux-gnu -A libs=-ldl"
@@ -231,26 +236,24 @@ $ cd $SPEC/tools/src
 $ ./buildtools
 ```
 
-完成编译之后，后出现下面的信息：
+Building succeed with this information:
 
 ![image](pictures/t32-2.png)
 
-然后创建tools/bin/linux-riscv64目录和其中的description文件：
+Then make directory tools/bin/linux-riscv64 and create a file named description:
 
 ```shell
 $ cd $SPEC/tools/bin/
 $ mkdir linux-riscv64
 ```
 
-description文件内容：
+description file contains：
 ```
 For riscv64 Linux systems
-                              Built on Qemu Fedora 5.5.0-0.rc5.git0.1.1.riscv64..
-                              fc32.riscv64 with GCC 9.2.1 20191120 (Red Hat 9.2..
-                              1-2)
+                              Built on ubuntu21.04 with GCC 10.3.0
 ```
 
-然后打包toolset
+Then package the toolset.
 
 ```
 $ cd $SPEC
@@ -258,13 +261,13 @@ $ source shrc
 $ packagetools linux-riscv64
 ```
 
-最后安装cpu2006：
+Finally install CPU2006：
 
 ```
 $ export SPEC_INSTALL_NOCHECK=1 
 $ ./install.sh -u linux-riscv64 -d /home/chenxiaoou/spec/cpu2006_install
 ```
 
-安装成功，显示如下：
+Installation succeed with this information.
 
 ![image](pictures/t32-3.png)
