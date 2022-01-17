@@ -19,9 +19,9 @@ The issues that we met are listed in the following.
 
 In order for packagetools script to package toolset after building, we'd better untar $SPEC/install_archives/tools-src.tar to $SPEC/tools directory.
 
-#### 1. 替换掉config.guess和config.sub
+#### 1. replace config.guess and config.sub
 
-下面几个工具需要更新config.guess和config.sub，本身这两个文件太旧了，无法识别出操作系统。
+The config.guess and config.sub files of the following tools need to be replaced. These files are too old。
 
 ```
 ./specinvoke/config.guess
@@ -33,7 +33,7 @@ In order for packagetools script to package toolset after building, we'd better 
 ./xz-5.2.2/build-aux/config.guess
 ```
 
-替换成下面两个比较新的文件
+The two files can be replaced with files in these links:
 
 http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess
 
@@ -41,7 +41,7 @@ http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub
 
 #### 2. Can't locate FindBin.pm
 
-报错的信息是：
+Error message
 ```
 make[2]: Entering directory '/home/riscv/benchmarks/tools/src/make-4.2.1'^M
 cd tests && perl ./run_make_tests.pl -srcdir /home/riscv/benchmarks/tools/src/maa
@@ -53,19 +53,19 @@ perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5
 BEGIN failed--compilation aborted at ./run_make_tests.pl line 32.^M
 ```
 
-解决方法：`sudo dnf install perl`
+Solution ：`sudo dnf install perl`
 
-#### 3. build perl在gcc10上面有bug
+#### 3. perl bug when compile with gcc10
 
 ![image](pictures/t31-1.png)
 
-由于build perl在gcc10上面有bug，修改Configure和cflags.SH文件中case "$gccversion" in相关1*->1.*
+Due to compile config files bug of perl on gcc10, we need to modify Configure and cflags.SH files. Replace `1*` with `1.*` in sentence `case "$gccversion"`
 
-#### 4. TimeDate的错误
+#### 4. TimeDate error
 
 ![image](pictures/t31-2.png)
 
-是个bug，2020年以后跑test会出错，修改TimeDate-2.30/t/getdate.t
+This is a bug. This test will fail after 2020. Need to modify TimeDate-2.30/t/getdate.t
 
 ```
 require Time::Local;
@@ -73,21 +73,11 @@ require Time::Local;
 +my $offset = Time::Local::timegm(0,0,0,1,0,1970);
 ```
 
-#### 5. 根据实际情况修改SPECBIN
-
-![image](pictures/t31-3.png)
-
-我的tools/src和cpu_mount在同一目录下（cpu_mount是CPU2017-1.1.8.iso挂载目录）
-
-../../cpu_mount/tools/bin
-
-修改变量SPECBIN=../../bin为SPECBIN=../../cpu_mount/tools/bin
-
-#### 6. 只读权限问题
+#### 5. read only issue
 
 ![image](pictures/t31-4.png)
 
-我的解决方法是将挂载点cpu_mount下的文件全部拷贝到新的文件夹下cpu2017下，然后给cpu2017文件夹添加写权限。
+Solution: Copy all from cpu_mount to new directory, and add write permission to the new directory.
 
 ```
 $ mkdir cpu2017
@@ -95,7 +85,7 @@ $ cp -r cpu_mount/* cpu2017/
 $ chmod -R +w cpu2017
 ```
 
-#### 7. missing makeinfo
+#### 6. missing makeinfo
 
 ![image](pictures/t31-5.png)
 
@@ -110,7 +100,7 @@ $ export MAKEFLAGS=-j4
 $ ./buildtools
 ```
 
-#### 8. 执行buildtools过程中可能有的交互式输入 
+#### 7. 执行buildtools过程中可能有的交互式输入 
 
 Hey!  Some of the Perl tests failed!
 If you think this is okay, enter y now:
