@@ -9,20 +9,15 @@
 
 ## Building toolset
 
-SPEC CPU的运行需要一些工具集，例如spectar、specperl等等，其实就是对常用工具的一些封装，但是必须使用spec提供的版本。但是SPEC官方并不支持RISCV架构，因此需要我们自己来编译spec的工具集。官网上有相应的指导文档：
-SPEC CPU running process need some tools, like spectar,specperl etc. These tools 
+SPEC CPU running process need some tools, like spectar,specperl etc. These tools are just wrappers for open sources tools. SPEC doesn't support RISCV officially, so we need to build this tool set by hand. There is an officail help document can be referred.
 
 https://www.spec.org/cpu2017/Docs/tools-build.html
 
-编译过程中会遇到具体的问题，可以参考：
+The issues that we met are listed in the following.
 
-https://gitee.com/lvxiaoqian/memo/blob/master/%E5%9C%A8unmatched%20Ubuntu21.04%E4%B8%8A%E8%B7%91cpu2017.md
+### Issues when building toolset for RISCV
 
-我自己的遇到的问题也记录在下一部分。
-
-### 构建toolset过程中的错误记录
-
-为了方便使用之后的packagetools工具，src目录需要解压在$SPEC/tools/目录下
+In order for packagetools script to package toolset after building, we'd better untar $SPEC/install_archives/tools-src.tar to $SPEC/tools directory.
 
 #### 1. 替换掉config.guess和config.sub
 
