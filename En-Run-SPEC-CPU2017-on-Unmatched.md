@@ -127,7 +127,7 @@ And some files are generated under $SPEC/tools/bin/linux-riscv64:
 ![image](pictures/t31-7.png)
 
 
-### 安装CPU2017
+### Install CPU2017
 
 ```shell
 $ ./install.sh -u linux-riscv64 -d /home/riscv/benchmarks/cpu2017_install
@@ -136,74 +136,37 @@ $ ./install.sh -u linux-riscv64 -d /home/riscv/benchmarks/cpu2017_install
 ![image](pictures/t31-8.png)
 
 
-### 配置config文件
+### Config file
 
-#### GCC9和GCC10在config上的区别
+#### difference between GCC9 and GCC10
 
-注意config的160行：
+Notice line 160 in config file:
 
 ```
 %define GCCge10  # EDIT: remove the '#' from column 1 if using GCC 10 or later
 ```
-如果GCC版本小于10的话，这一行是需要注释的，不然会报下面的错误：
+
+IF GCC version is before 10, this line should be commented. Otherwise, will cause this error:
 
 ```
 gfortran: error: unrecognized command line option '-fallow-argument-mismatch'; dd id you mean '-Wno-argument-mismatch'?
 ```
-因为-fallow-argument-mismatch是在GCC10中新引入的。
+Becuase flag `-fallow-argument-mismatch` is newly introduced in GCC10.
 
-#### 从网上的config里的收获
+### Run SPEC CPU
 
-- 使用jemalloc库
-
-### 运行SPEC CPU
-
-#### test run
-
-运行完整的测试集之前，可以先指定`--size=test`来运行，即workload选择test，比较快就能运行完，可以测试一下你的config是否有问题。
-
+Before running SPEC CPU, we need to set stack size to unlimited:
 ```
-$ runcpu --config=gcc-test.cfg --size=test --noreportable intrate
+$ ulimit -s unlimited
 ```
 
-我在QEMU上运行test测试，消耗的时间是41847秒。
+INT SPEED
 
-#### iterations=1 
+INT RATE
 
-一般在tuning阶段，为了缩短测试时间，我们可以设定`iterations=1`，每个小benchmark只跑一次，并且要指定`--noreportable`。
+FP SPEED
 
-```
-$ runcpu --config=gcc-test.cfg --noreportable --iterations=1 intrate
-```
-
-#### reportable run 
-
-最后，要出一个可发布的有效报告，需要指定`--reportable`。
-
-```
-$ runcpu --config=gcc-test.cfg --reportable intrate
-```
-
-#### runcpu时候的错误
-
-![image](pictures/t31-9.png)
-
-这个是config的配置问题。
-
-#### fp 运行时报错
-
-需要切换到root，设置stack size :
-
-```shell
-# ulimit -s unlimited
-```
-
-#### fp 621 peak error
+FP RATE
 
 
-#### fp speed 644 运行停不下来，直到VM被killed
 
-检查一下stack size 还有config里面`define GCCge10`那一行
-在docker0中单独运行了644，可以正常运行，报告编号005
-
-#### 521 
