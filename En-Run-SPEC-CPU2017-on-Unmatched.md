@@ -161,12 +161,23 @@ $ ulimit -s unlimited
 ```
 
 INT SPEED
+```
+runcpu -c gcc-test.cfg --noreportable -n 1 -I -T base intspeed
+```
 
 INT RATE
+```
+runcpu -c gcc-test.cfg --noreportable -n 1 -I -T base -C 4 intrate
+```
 
 FP SPEED
+```
+runcpu -c gcc-test.cfg --noreportable -n 1 -I -T base fpspeed
+```
 
 FP RATE
-
+```
+runcpu -c gcc-test.cfg --noreportable -n 1 -I -T base -C 4 fprate
+```
 
 
