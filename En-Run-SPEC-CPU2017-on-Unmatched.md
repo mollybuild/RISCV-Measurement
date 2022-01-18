@@ -91,31 +91,21 @@ $ chmod -R +w cpu2017
 
 sudo dnf install texinfo
 
-#### 一些环境变量的设置
+#### Set some environment variables
 
-编译buildtools之前也可以设置一些环境变量，例如设置MAKEFLAGS来开启多线程编译：
+Before running buildtools, we can set some enviroment variables, like set MAKEFLAGS to use multithreaded compilation.
 
 ```
 $ export MAKEFLAGS=-j4
 $ ./buildtools
 ```
+### Use packagetools to generate directory $SPEC/tools/bin/linux-riscv64
 
-#### 7. 执行buildtools过程中可能有的交互式输入 
+After building toolset, we need to use packagetools to generate directory $SPEC/tools/bin/linux-riscv64.
 
-Hey!  Some of the Perl tests failed!
-If you think this is okay, enter y now:
+If buildtools finished successfully, there will be tools like specperl, spectar, specxz under $SPEC/bin directory.
 
-输入y继续编译。
-
-### 使用packagetools来生成$SPEC/tools/bin/linux-riscv64目录
-
-执行buildtools脚本完成toolset的编译之后，就需要用packagetools来生成$SPEC/tools/bin/linux-riscv64目录。
-
-注意，在上步执行buildtools时候，src目录需要解压在$SPEC/tools/目录下，在运行buildtools。
-
-buildtools运行成功之后，会在$SPEC/bin目录下生成specperl、spectar、specxz等工具。
-
-然后手动创建$SPEC/tools/bin/linux-riscv64和其中的description文件，description内容如下：
+Then we can make $SPEC/tools/bin/linux-riscv64 by hand, and create a file named description under it.  The content of description looks like:
 
 ```shell
 For riscv64 Linux systems
@@ -123,16 +113,16 @@ For riscv64 Linux systems
                               scv64 with GCC 10.3.1 20210422 (Red Hat 10.3.1-1)
 ```
 
-最后回到$SPEC目录，在该目录下执行：
+Finally, back to $SPEC,  and run this command under $SPEC:
 
 ```shell
 $ ./bin/packagetools linux-riscv64
 ```
-执行完成会有如下提示：
+When finished, there will be this prompt.
 
 ![image](pictures/t31-6.png)
 
-就会自动生成$SPEC/tools/bin/linux-riscv64下的各种文件。
+And some files are generated under $SPEC/tools/bin/linux-riscv64:
 
 ![image](pictures/t31-7.png)
 
