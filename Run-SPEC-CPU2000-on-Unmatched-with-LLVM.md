@@ -2,15 +2,19 @@
 
 ## 硬软件配置
 
-开发板：Hifive unmatched board with 4 cores
-Memory: 16G
-DISK: 1T SSD
-OS: Ubuntu21.04
-Compiler: Clang 14.0.0
+- 开发板：Hifive unmatched board with 4 cores
+
+- Memory: 16G
+
+- DISK: 1T SSD
+
+- OS: Ubuntu21.04
+
+- Compiler: Clang 14.0.0
 
 ## Build error
 
-### 168.wupwise 178.galgel 187.facerec 191.fma3d 200.sixtrack 301.apsi
+#### 168.wupwise 178.galgel 187.facerec 191.fma3d 200.sixtrack 301.apsi
 
 这些FP benchmark在编译时都有相似的报错，类似于：
 ```
@@ -31,7 +35,7 @@ Error: Type mismatch in argument 'qvar' at (1); passed COMPLEX(8) to REAL(8)
 
 解决的方法是，如果系统的gfortran版本在10以上，那么在Fortran的编译选项中可以加上`-fallow-argument-mismatch`。
 
-##### 252.eon
+#### 252.eon
 
 Build error 1
 ```
@@ -77,7 +81,7 @@ result:
 252.eon           1300       303       430*
 ```
 
-##### 300.twolf
+#### 300.twolf
 
 ```
 addimp.c:158:1: error: non-void function 'addimp' should return a value [-Wreturn-type]
@@ -96,7 +100,7 @@ result:
 
 ## 完整的跑分情况
 
-### FP SPEED (Fixed)
+### FP SPEED
 
 ```
 runspec --config linux-riscv64-llvm.cfg -n 1 -I --noreportable fp
@@ -122,7 +126,7 @@ runspec --config linux-riscv64-llvm.cfg -n 1 -I --noreportable fp
 ```
 
 
-### INT SPEED (Fixed)
+### INT SPEED
 
 ```
 runspec --config linux-riscv64-llvm.cfg -n 1 -I --noreportable int
