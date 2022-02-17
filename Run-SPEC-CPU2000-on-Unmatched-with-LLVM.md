@@ -105,7 +105,6 @@ result:
 ```
 runspec --config linux-riscv64-llvm.cfg -n 1 -I --noreportable fp
 ```
-(on unmathced014 /home/chenxiaoou/spec/cpu2000/result/CFP2000.035.asc)
 ```
    168.wupwise       1600       600       267*
    171.swim          3100      1928       161*
@@ -131,7 +130,6 @@ runspec --config linux-riscv64-llvm.cfg -n 1 -I --noreportable fp
 ```
 runspec --config linux-riscv64-llvm.cfg -n 1 -I --noreportable int
 ```
-(on unmatched015 /home/chenxiaoou/spec/cpu2000/result/CINT2000.033.asc)
 ```
    164.gzip          1400       595       235*
    175.vpr           1400       624       225*
