@@ -235,7 +235,9 @@ CPORTABILITY    = -DSPEC_CPU2000_NEED_BOOL -std=gnu89 -DI_FCNTL -DSPEC_CPU2000_G
 
 254.gap=default=default=default:
 #CPORTABILITY   = -DSYS_HAS_SIGNAL_PROTO -DSYS_HAS_MALLOC_PROTO -DSYS_HAS_CALLOC_PROTO -DSYS_IS_USG -DSYS_HAS_IOCTL_PROTO -DSYS_HAS_TIME_PROTO -D_GNU_SOURCE
-CPORTABILITY = -DSPEC_CPU2000 -DSPEC_CPU2000_LP64 -DSYS################################################################
+CPORTABILITY = -DSPEC_CPU2000 -DSPEC_CPU2000_LP64 -DSYS
+
+################################################################
 # Baseline Tuning Flags
 ################################################################
 
