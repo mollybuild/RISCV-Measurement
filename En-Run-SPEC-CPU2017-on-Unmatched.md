@@ -805,6 +805,9 @@ default:               # data model applies to all benchmarks
 527.cam4_r,627.cam4_s:  #lang='F,C'
    PORTABILITY   = -DSPEC_CASE_FLAG  -DSPEC_LP64 
 
+619.lbm_s,627.cam4_s,628.pop2_s,638.imagick_s,644.nab_s,657.xz_s:
+   PORTABILITY = -fopenmp -I/usr/lib/gcc/riscv64-linux-gnu/10/include
+
 628.pop2_s:  #lang='F,C'
    CPORTABILITY  = -DSPEC_CASE_FLAG -DSPEC_LP64 
    EXTRA_OPTIMIZE = -fopenmp
@@ -830,7 +833,7 @@ default:               # data model applies to all benchmarks
    505.mcf_r,605.mcf_s=peak:                # https://www.spec.org/cpu2017/Docs/benchmarks/505.mcf_r.html
       EXTRA_CFLAGS = -fno-strict-aliasing 
    525.x264_r,625.x264_s=peak:              # https://www.spec.org/cpu2017/Docs/benchmarks/525.x264_r.html
-      EXTRA_CFLAGS = -fcommon
+      EXTRA_CFLAGS = -fcommon -I/usr/lib/gcc/riscv64-linux-gnu/10/include
    638.imagick_s=peak:
       EXTRA_OPTIMIZE = -fopenmp
    644.nab_s=peak:
@@ -844,7 +847,10 @@ default:               # data model applies to all benchmarks
    intrate,intspeed=base:
       EXTRA_COPTIMIZE = -fgnu89-inline  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fcommon
    525.x264_r,625.x264_s=base:              # https://www.spec.org/cpu2017/Docs/benchmarks/525.x264_r.html
-      EXTRA_CFLAGS = -fcommon
+      EXTRA_CFLAGS = -fcommon -I/usr/lib/gcc/riscv64-linux-gnu/10/include
+   557.xz_r,657.xz_s=base:
+      EXTRA_CFLAGS = -fopenmp -I/usr/lib/gcc/riscv64-linux-gnu/10/include
+
    fpspeed=base:
 #      EXTRA_LDFLAGS        = -Wl,-stack_size,0x10000000,-fgnu89-inline
       EXTRA_CFLAGS = -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon
