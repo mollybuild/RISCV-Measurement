@@ -65,7 +65,23 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmarks-Dhrys
 
 ### SPEC CPU2000 2006 2017的测试工作
 
+- SPEC CPU2000 在RISCV64平台上的安装和运行
 
+https://github.com/mollybuild/RISCV-Measurement/blob/master/Run-SPEC-CPU2000-on-Unmatched.md （使用GCC编译）
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/Run-SPEC-CPU2000-on-Unmatched-with-LLVM.md （使用LLVM编译）
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/En-Run-SPEC-CPU2000-on-Unmatched.md （英文版）
+
+- SPEC CPU2006 在RISCV64平台上的安装和运行
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/Install-CPU2006-on-unmatched.md
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/En-Run-SPEC-CPU2006-on-Unmatched.md （英文版）
+
+- SPEC CPU2017 在RISCV64平台上的安装和运行
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/En-Run-SPEC-CPU2017-on-Unmatched.md （英文版）
 
 ## 三. 性能工具的使用
 
