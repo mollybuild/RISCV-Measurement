@@ -63,6 +63,10 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-Embench-on-rv32L
 
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmarks-Dhrystone-FPmark-Linpack-Whetstone-Coremark.md
 
+### SPEC CPU2000 2006 2017的测试工作
+
+
+
 ## 三. 性能工具的使用
 
 ### gcov和linux perf工具的使用
@@ -95,6 +99,10 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmark-on-D1.
 ### LLVM RISCV64 native工具的构建，并在D1开发板上运行LLVM test-suite
 
 https://github.com/mollybuild/RISCV-Measurement/blob/master/run-LLVM-testsuite-on-D1.md
+
+### 在D1上和unmatched上测Coremark
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/CoreMark-data-on-D1-and-unmatched.md
 
 ## 六. 常用工具
 
