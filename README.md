@@ -31,6 +31,10 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/Build-RISCV-LLVM-and
 
 【TODO】
 
+### 交叉编译bishengJDK11 for RV64 并运行回归测试
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/cross-compile-bishengJDK11-for-RV64-and-run-regression-test.md
+
 ### 使用RISCV GCC/LLVM编译小程序并在模拟器上运行
 
 1. 使用RISCV GCC/LLVM编译小程序并在模拟器上运行
