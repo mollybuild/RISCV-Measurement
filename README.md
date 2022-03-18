@@ -69,6 +69,8 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/run-benchmarks-Dhrys
 
 ### SPEC CPU2000 2006 2017的测试工作
 
+SPEC CPU测试中用到的config配置可以参考：https://github.com/mollybuild/RISCV-Measurement/tree/master/SPEC-CPU-Config （其中硬软件信息可以忽略，只是一个模板）
+
 - SPEC CPU2000 在RISCV64平台上的安装和运行
 
 https://github.com/mollybuild/RISCV-Measurement/blob/master/Run-SPEC-CPU2000-on-Unmatched.md （使用GCC编译）
