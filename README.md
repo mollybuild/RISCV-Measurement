@@ -123,10 +123,16 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/CoreMark-data-on-D1-
 ## 六. 常用工具
 
 1. 常用工具的使用
+
 https://github.com/mollybuild/RISCV-Measurement/blob/master/Tools-Guide.md
 
 2. 在qemu riscv64虚拟机中安装docker并运行riscv linux
+
 https://github.com/mollybuild/RISCV-Measurement/blob/master/Install-docker-and-run-linux-container-in-qemu-systgem-riscv64.md
+
+3. 在D1/openEuler上安装docker，并运行docker/Debian
+
+https://github.com/mollybuild/RISCV-Measurement/blob/master/install-docker-on-D1-oE-and-run-docker-linux.md
 
 ## 六. 公开报告
 
