@@ -4,6 +4,10 @@
 
 llvm-project源码版本：branch main, commit 7fd60ee6e0a87957a718297a4a42d9881fc561e3l
 
+### Compiler Options
+
+-O3
+
 #### intspeed
 
 ```
