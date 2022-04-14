@@ -123,7 +123,7 @@ gcc -O -o whetstone whetstone.c -lm
 
 运行结果：
 
-![image](pictures/t36-8.png)
+![image](pictures/t36-9.png)
 
 ## Coremark
 
