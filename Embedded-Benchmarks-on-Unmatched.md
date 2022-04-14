@@ -122,6 +122,7 @@ gcc -O -o whetstone whetstone.c -lm
 ```
 
 运行结果：
+
 ![image](pictures/t36-8.png)
 
 ## Coremark
