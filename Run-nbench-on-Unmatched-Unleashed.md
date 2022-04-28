@@ -1,3 +1,7 @@
+## nbench简介
+
+nbench是一个简单的用于测试处理器、存储器性能的基准测试程序。
+
 ## ubuntu下的安装
 
 ```
@@ -8,12 +12,12 @@ $ make
 $ ./nbench
 ```
 
-result:
+## nbench result on Unmatched and unleashed
 
 on unmatched:
 
-![image](8B79786E7E8549CFB2F71749BD7112B9)
+![image](pictures/t40-1.png)
 
 on unleashed:
 
-![image](9BB062D6CC9C4D159BA9C025F0B7A916)
+![image](pictures/t40-2.png)
