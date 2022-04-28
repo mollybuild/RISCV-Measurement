@@ -4,6 +4,12 @@
 
 我们分析过的Benchmark有Embench, Dhrystone, FPMark, Linpack, Whetstone, Coremark。
 
+这三款开发板上的性能对比汇总如下图：
+
+![image](pictures/t36-13.png)
+
+详细的测试过程和数据列在下面。
+
 ## 系统信息
 
 ### unleashed系统信息：
