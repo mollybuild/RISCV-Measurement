@@ -124,7 +124,7 @@ ln -s /usr/lib/riscv64-linux-gnu/libcrypt.so.1 ~/opt-riscv-native/sysroot/lib/li
 ```
 
 #### Result
-(unmatched016 /home/chenxiaoou/fpmark_1.5.3126/builds/linux64/gcc64/cert/22_04_11_08_02_43/linux64.gcc64.mark)
+
 ![image](pictures/t36-5.png)
 
 #### -v0
