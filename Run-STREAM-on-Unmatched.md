@@ -1,0 +1,46 @@
+## STREAM
+
+参考：
+
+https://www.cnblogs.com/iouwenbo/p/14377478.html
+
+Stream带宽测试的解释 - 阳光总在风雨后的文章 - 知乎
+https://zhuanlan.zhihu.com/p/407489860
+
+unmatched cpu参数如下：
+
+![image](EFC5C1073FC44C4BBA1DB0B009A89B66)
+
+STREAM测试结果：
+
+GCC -O0：
+
+![image](DE2F9BD59977463DBC13EE50D1740095)
+
+GCC -O2：
+
+![image](96B40250046849AB8E3B59874F21967C)
+
+GCC -Ofast:
+
+![image](AE8986E652534DD49DDC3559579171A4)
+
+GCC -Ofast thread=2
+
+![image](E0993D77F7B84361959E63663A187882)
+
+GCC -Ofast thread=3
+
+![image](5731567D946D4447BFECF59FDB9063FB)
+
+GCC -Ofast thread=4
+
+![image](33C1C443A20B48DEBC112457C093B65A)
+
+GCC -Ofast thread=5
+
+![image](8540D06FACBF41BB8A5F4764DF4A1912)
+
+GCC -Ofast thread=16
+
+![image](B0263FE29BCF49DFBEE17954A04D8942)
