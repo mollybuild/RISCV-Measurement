@@ -1,0 +1,21 @@
+FC = flang
+FFLAGS = -O3
+
+all: m_String.fppized.o m_List.fppized.o mct_mod.fppized.o seq_flds_mod.fppized.o
+
+m_String.fppized.o: m_String.F90
+        $(FC) $(FFLAGS) -c -o m_String.fppized.o m_String.F90
+
+m_List.fppized.o: m_List.F90
+        $(FC) $(FFLAGS) -c -o m_List.fppized.o m_List.F90
+
+mct_mod.fppized.o: mct_mod.F90
+        $(FC) $(FFLAGS) -c -o mct_mod.fppized.o mct_mod.F90
+
+seq_flds_mod.fppized.o: seq_flds_mod.F90
+        $(FC) $(FFLAGS) -c -o seq_flds_mod.fppized.o seq_flds_mod.F90
+
+
+.PHONY:clean
+clean:
+        rm -rf *.o *.mod
