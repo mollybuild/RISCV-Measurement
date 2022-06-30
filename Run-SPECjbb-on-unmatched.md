@@ -190,5 +190,5 @@ JAVA_OPTS_BE="-Xms12g -Xmx12g"
 结果：
 ```
 Report directory is result/specjbb2015-D-20220630-00001/report-00001
-RUN RESULT: hbIR (max attempted) = 451, hbIR (settled) = 427, max-jOPS = 392, critical-jOPS = 0
+RUN RESULT: hbIR (max attempted) = 451, hbIR (settled) = 427, max-jOPS = 388, critical-jOPS = 29
 ```
