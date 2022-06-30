@@ -67,14 +67,128 @@ $ cd mnt && cp -r * jbb2015
 $ sudo umount mnt
 ```
 
-2，运行SPECjbb2015 composite
+2，运行SPECjbb2015
 
-假设JDK解压在HOME目录下。
+#### composite
+
+- jbb2015 command：
 ```
-$ $HOME/jdk/bin/java -Xms3g -Xmx3g -jar specjbb2015.jar -m composite
+$ /home/chenxiaoou/jdk/bin/java -Xms3g -Xmx3g -jar specjbb2015.jar -m composite
 ```
 
 结果：
 ```
+Report directory is result/specjbb2015-C-20220610-00001/report-00001
 RUN RESULT: hbIR (max attempted) = 307, hbIR (settled) = 273, max-jOPS = 359, critical-jOPS = 0
+```
+
+- jbb2015 command:
+```
+/home/chenxiaoou/jdk-release/bin/java -Xms6g -Xmx6g -jar specjbb2015.jar -m composite
+```
+
+结果：
+```
+Report directory is result/specjbb2015-C-20220615-00001/report-00001
+RUN RESULT: hbIR (max attempted) = 556, hbIR (settled) = 522, max-jOPS = 484, critical-jOPS = 63
+```
+
+- Java option = -server -Xms6g -Xmx6g
+
+结果：
+```
+Report directory is result/specjbb2015-C-20220617-00001/report-00001
+RUN RESULT: hbIR (max attempted) = 556, hbIR (settled) = 522, max-jOPS = 395, critical-jOPS = 61
+```
+
+#### multiJVM
+
+- Java Option1:
+```
+JAVA_OPTS_C="-Xms2g -Xmx2g"
+JAVA_OPTS_TI="-Xms2g -Xmx2g"
+JAVA_OPTS_BE="-Xms2g -Xmx2g"
+```
+
+结果：
+```
+Report directory is result/specjbb2015-M-20220617-00001/report-00001
+RUN RESULT: hbIR (max attempted) = 320, hbIR (settled) = 220, max-jOPS = 218, critical-jOPS = 0
+```
+
+- Java Option2:
+```
+JAVA_OPTS_C="-Xms2g -Xmx2g"
+JAVA_OPTS_TI="-Xms2g -Xmx2g"
+JAVA_OPTS_BE="-Xms6g -Xmx6g"
+```
+
+结果：
+```
+Report directory is result/specjbb2015-M-20220620-00001/report-00001
+RUN RESULT: hbIR (max attempted) = 451, hbIR (settled) = 427, max-jOPS = 347, critical-jOPS = 0
+```
+
+- Java Option3:
+```
+JAVA_OPTS_C="-Xms2g -Xmx2g"
+JAVA_OPTS_TI="-Xms2g -Xmx2g"
+JAVA_OPTS_BE="-Xms8g -Xmx8g"
+```
+
+结果：
+```
+Report directory is result/specjbb2015-M-20220620-00001/report-00001
+RUN RESULT: hbIR (max attempted) = 451, hbIR (settled) = 427, max-jOPS = 437, critical-jOPS = 0
+```
+
+#### Distributed
+
+- 1 Group with 1 TxI/Backend
+
+set both on Driver and SUT:
+
+```
+specjbb.group.count=1
+specjbb.controller.host=<ControllerIP>
+```
+
+on Driver:
+
+```
+java -jar specjbb2015.jar -m distcontroller
+java -jar specjbb2015.jar -m txinjector -G GRP1 -J JVM2
+```
+
+on SUT:
+
+```
+java -jar specjbb2015.jar -m backend -G GRP1 -J JVM2
+```
+
+result:
+
+on unmathced015 
+```
+Report directory is result/specjbb2015-D-20220628-00001/report-00001
+RUN RESULT: hbIR (max attempted) = 417, hbIR (settled) = 388, max-jOPS = 384, critical-jOPS = 0
+```
+
+- 1 Group with 1 TxI/Backend + set heap size
+
+run_distributed_ctrl_txI.sh:
+```
+JAVA_OPTS_C="-Xms2g -Xmx2g"
+JAVA_OPTS_TI="-Xms2g -Xmx2g"
+```
+
+run_distributed_sut.sh:
+```
+JAVA_OPTS_BE="-Xms12g -Xmx12g"
+```
+
+结果：
+```
+Report directory is result/specjbb2015-D-20220630-00001/report-00001
+RUN RESULT: hbIR (max attempted) = 451, hbIR (settled) = 427, max-jOPS = 392, critical-jOPS = 0
 ```
