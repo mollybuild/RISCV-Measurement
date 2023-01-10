@@ -1,0 +1,24 @@
+diff -urN fpmark_1.5.3126/util/perl/cert_median.pl fpmark_1.5.3126_new/util/perl/cert_median.pl
+--- fpmark_1.5.3126/util/perl/cert_median.pl    2023-01-10 05:26:09.965291005 +0000
++++ fpmark_1.5.3126_new/util/perl/cert_median.pl        2023-01-09 09:05:40.002032918 +0000
+@@ -86,7 +86,7 @@
+        $med=median($timed{$lastuid});
+        $all_fields{$lastuid}->[$itime]=$med;
+
+-       printf("%-15d %5s %-40s %3d %3d %5d %10.3f %10d %10.2f %9d %10d median $contype\n",
++       printf("%-15d %5s %-40s %3d %3d %5d %10.3f %10d %10.4f %9d %10d median $contype\n",
+                @{$all_fields{$lastuid}},
+                #variance($res{$lastuid}),
+                #std_dev($res{$lastuid})
+diff -urN fpmark_1.5.3126/util/perl/results_parser.pl fpmark_1.5.3126_new/util/perl/results_parser.pl
+--- fpmark_1.5.3126/util/perl/results_parser.pl 2023-01-10 05:21:42.150987553 +0000
++++ fpmark_1.5.3126_new/util/perl/results_parser.pl     2023-01-09 09:06:28.545932704 +0000
+@@ -136,7 +136,7 @@
+                        }
+
+                        # $runlog{$uid}="$uid\tMLT\t$oname\t$ctxt\t$wrkr\t$fails\t$secs\t$its\t".$itps;
+-                       $runlog{$uid} = sprintf("%-15d %5s %-40s %3d %3d %5d %10.3f %10d %10.2f",
++                       $runlog{$uid} = sprintf("%-15d %5s %-40s %3d %3d %5d %10.3f %10d %10.4f",
+                                $uid,
+                                "MLT",
+                                $oname,
