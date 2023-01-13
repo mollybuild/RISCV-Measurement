@@ -1,0 +1,23 @@
+diff -urN DhrystoneV2.1/dhry_1.c DhrystoneV2.1_new/dhry_1.c
+--- DhrystoneV2.1/dhry_1.c      2023-01-13 09:45:44.146679587 +0800
++++ DhrystoneV2.1_new/dhry_1.c  2023-01-13 09:47:56.813529609 +0800
+@@ -45,7 +45,7 @@
+
+ #ifdef TIMES
+ struct tms time_info;
+-extern int times ();
++extern clock_t times ();
+  /* see library function "times" */
+ #define Too_Small_Time (2*HZ)
+  /* Measurements should last at least about 2 seconds */
+diff -urN DhrystoneV2.1/dhry.h DhrystoneV2.1_new/dhry.h
+--- DhrystoneV2.1/dhry.h        2023-01-12 17:33:29.472123452 +0800
++++ DhrystoneV2.1_new/dhry.h    2023-01-13 09:49:54.840516579 +0800
+@@ -370,6 +370,7 @@
+ #include <sys/types.h>
+ #include <sys/times.h>
+  /* for "times" */
++#define HZ 60
+ #endif
+
+ #define Mic_secs_Per_Second 1000000.0
