@@ -6,7 +6,7 @@
 GCC=true
 LLVM=true
 compiler=""
-SPECdir="/home/chenxiaoou/spec/CPU2017-v1.1.9"
+SPECdir="$HOME/spec/CPU2017-v1.1.9"
 machine=$(hostname)
 opt=O3
 
