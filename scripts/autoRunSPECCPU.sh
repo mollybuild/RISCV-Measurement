@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## This script tested on x86 Ubuntu, RV64 Ubuntu.
+
 ## Usage: ./autoRunSPECCPU.sh [GCC/LLVM] [O3/Ofast/Both]
 ## Getting parameters of the scripts
 
@@ -204,7 +206,7 @@ cd $SPECdir
 source shrc
 
 if [ $compiler == "GCC" ]; then
-    SPECCPUconfig="Example-gcc-linux-x86.cfg"
+    SPECCPUconfig="my-gcc-linux-x86.cfg"
     if [ $opt == O3 ]; then
         runcpu --define gcc_dir=$HOME/opt/$testcompiler -c $SPECCPUconfig --noreportable -n 1 -I -T base all 2>&1 | tee cpu.log
     elif [ $opt == Ofast ]; then
@@ -213,7 +215,7 @@ if [ $compiler == "GCC" ]; then
         runcpu --define gcc_dir=$HOME/opt/$testcompiler -c $SPECCPUconfig --noreportable -n 1 -I -T all all 2>&1 | tee cpu.log
     fi
 elif [ $compiler == "LLVM" ]; then
-    SPECCPUconfig="Example-llvm-linux-x86.cfg"
+    SPECCPUconfig="my-llvm-linux-x86.cfg"
     if [ $opt == O3 ]; then
         runcpu --define gcc_dir=$HOME/opt/$testcompiler -c $SPECCPUconfig --noreportable -n 1 -I -T base all 2>&1 | tee cpu.log
     elif [ $opt == Ofast ]; then
