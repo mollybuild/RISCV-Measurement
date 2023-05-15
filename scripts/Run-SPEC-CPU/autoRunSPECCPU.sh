@@ -112,6 +112,7 @@ EOF
             if [ ! -d "$HOME/opt/$llvmver" ]; then
                 echo "$llvmver hasn't been built & install, now going to build & install"
                 cd LLVM-source/llvm-project-$llvmver
+                rm -rf build
                 mkdir build && cd build
                 cmake -DLLVM_ENABLE_PROJECTS="clang;flang;openmp;mlir" -DLLVM_ENABLE_RUNTIMES="compiler-rt" -DLLVM_TARGETS_TO_BUILD=host -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_INSTALL_PREFIX=$HOME/opt/$llvmver -GNinja ../llvm
                 ninja
@@ -166,7 +167,7 @@ fi
 
 ## install prerequisites
 
-sudo apt install ftp wget ninja-build
+sudo apt install ftp wget ninja-build clang
 
 ## Get GCC/LLVM source code, build and install
 getnbuildsrc
@@ -215,11 +216,11 @@ if [ $compiler == "GCC" ]; then
 elif [ $compiler == "LLVM" ]; then
     SPECCPUconfig="my-llvm-linux-x86.cfg"
     if [ $opt == O3 ]; then
-        runcpu --define build_ncpus=$(nproc) --define gcc_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T base all 2>&1 | tee cpu.log
+        runcpu --define build_ncpus=$(nproc) --define llvm_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T base all 2>&1 | tee cpu.log
     elif [ $opt == Ofast ]; then
-        runcpu --define build_ncpus=$(nproc) --define gcc_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T peak all 2>&1 | tee cpu.log
+        runcpu --define build_ncpus=$(nproc) --define llvm_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T peak all 2>&1 | tee cpu.log
     elif [ $opt == Both ]; then
-        runcpu --define build_ncpus=$(nproc) --define gcc_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T all all 2>&1 | tee cpu.log
+        runcpu --define build_ncpus=$(nproc) --define llvm_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T all all 2>&1 | tee cpu.log
     fi
 else
     echo "compiler if neither GCC or LLVM. There must be something wrong. Exit"
