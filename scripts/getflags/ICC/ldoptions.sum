@@ -1,0 +1,14 @@
+514 | >-std=c11</a>
+38 | >-L/usr/local/jemalloc64-5.0.1/</a>
+2014 | >-Wl,-z,muldefs</a>
+2005 | >-ljemalloc</a>
+745 | >-w</a>
+3 | >-L/spec2017/je5.0.1-64</a>
+45 | >-std=c++14</a>
+204 | >-fuse-ld=gold</a>
+280 | >-qnextgen</a>
+356 | >-L/usr/local/je5.0.1-64/lib</a>
+2364 | >-m64</a>
+1608 | >-L/usr/local/jemalloc64-5.0.1/lib</a>
+9 | >-L/sh10.2 -lsmartheap64</a>
+280 | >-Wl,-plugin-opt=-x86-branches-within-32B-boundaries</a>

@@ -1,0 +1,31 @@
+1 | >-L/opt/rh/devtoolset-10/root/usr/bin//lib</a>
+2 | >-L/home/jemalloc-5.2.1-setup/lib</a>
+2 | >-L/home/amptest/ampere_spec2017/spec2017/jemalloc/install/lib</a>
+9 | >-flto</a>
+10 | >-L/home/amptest/ampere_spec2017/gcc/install/lib</a>
+7 | >-ffinite-loops</a>
+1 | >-L/opt/rh/devtoolset-10/root/usr/bin//lib64</a>
+1 | >-L/home/jemalloc-5.2.1/lib</a>
+2 | >-L/home/amptest/ampere_spec2017/spec2017/gcc/install/lib64</a>
+15 | >-std=c++03</a>
+7 | >--param early-inlining-insns=256</a>
+19 | >-mabi=lp64</a>
+15 | >-ljemalloc</a>
+10 | >-std=c99</a>
+10 | >-L/home/amptest/ampere_spec2017/jemalloc/install/lib</a>
+10 | >-L/home/amptest/ampere_spec2017/gcc/install/lib64</a>
+6 | >-fomit-frame-pointer</a>
+8 | >-Ofast</a>
+8 | >-flto=32</a>
+7 | >--param inline-unit-growth=256</a>
+2 | >-L/home/amptest/ampere_spec2017/spec2017/gcc/install/lib</a>
+6 | >-march=armv8.2-a+lse</a>
+13 | >-funroll-loops</a>
+6 | >-fno-PIE</a>
+4 | >-pipe</a>
+7 | >--param max-inline-insns-auto=128</a>
+6 | >-no-pie</a>
+11 | >-O3</a>
+17 | >-g</a>
+6 | >-fno-strict-aliasing</a>
+13 | >-mcpu=neoverse-n1</a>

@@ -1,0 +1,22 @@
+| >-m64</a>
+| >-Wl,-mllvm -Wl,-align-all-nofallthru-blocks=6</a>
+| >-Wl,-mllvm -Wl,-reduce-array-computations=3</a>
+| >-O3</a>
+| >-march=znver4</a>
+| >-fveclib=AMDLIBM</a>
+| >-ffast-math</a>
+| >-fopenmp</a>
+| >-flto</a>
+| >-fstruct-layout=7</a>
+| >-mllvm -unroll-threshold=50</a>
+| >-mllvm -inline-threshold=1000</a>
+| >-fremap-arrays</a>
+| >-fstrip-mining</a>
+| >-mllvm -reduce-array-computations=3</a>
+| >-DSPEC_OPENMP</a>
+| >-zopt</a>
+| >-fopenmp=libomp</a>
+| >-lomp</a>
+| >-lamdlibm</a>
+| >-lamdalloc</a>
+| >-lflang</a>

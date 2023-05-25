@@ -1,0 +1,54 @@
+559 | >-lmvec</a>
+390 | >-DUSE_OPENMP</a>
+1055 | >-m64</a>
+1300 | >-ljemalloc</a>
+370 | >-fstruct-layout=7</a>
+1614 | >-Wl,-mllvm -Wl,-reduce-array-computations=3</a>
+12 | >-fuse-ld=lld</a>
+1244 | >-Wl,-mllvm -Wl,-region-vectorize</a>
+1614 | >-lflang</a>
+370 | >-lamdalloc</a>
+559 | >-Wl,-mllvm -Wl,-vector-library=LIBMVEC</a>
+1670 | >-ffast-math</a>
+543 | >-lflangrti</a>
+11 | >-Wl,-mllvm -Wl,-enable-vectorize-compares</a>
+1670 | >-mllvm -inline-threshold=1000</a>
+1055 | >-fveclib=AMDLIBM</a>
+56 | >-march=znver1</a>
+1670 | >-flto</a>
+685 | >-mllvm -enable-licm-vrp</a>
+33 | >-Wl,-plugin-opt=-lsr-in-nested-loop</a>
+1267 | >-Wl,-mllvm -Wl,-function-specialize</a>
+370 | >-fstrip-mining</a>
+1670 | >-lomp</a>
+56 | >-mno-avx2</a>
+603 | >-lpthread</a>
+543 | >-mno-adx</a>
+1055 | >-Wl,-mllvm -Wl,-align-all-nofallthru-blocks=6</a>
+559 | >-march=znver2</a>
+603 | >-ldl</a>
+553 | >-Wl,-allow-multiple-definition</a>
+370 | >-zopt</a>
+1670 | >-DSPEC_OPENMP</a>
+685 | >-march=znver3</a>
+33 | >-Wl,-plugin-opt=-enable-vectorize-compares=false</a>
+1670 | >-fopenmp=libomp</a>
+615 | >-fstruct-layout=3</a>
+1670 | >-O3</a>
+559 | >-mllvm -vector-library=LIBMVEC</a>
+1300 | >-mllvm -enable-gvn-hoist</a>
+33 | >-Wl,-plugin-opt=-merge-constant</a>
+685 | >-mllvm -global-vectorize-slp=true</a>
+1614 | >-mllvm -reduce-array-computations=3</a>
+1300 | >-z muldefs</a>
+1300 | >-flv-function-specialization</a>
+1670 | >-fremap-arrays</a>
+370 | >-march=znver4</a>
+543 | >-mno-sse4a</a>
+1670 | >-mllvm -unroll-threshold=50</a>
+357 | >-Wl,-mllvm -Wl,-enable-licm-vrp</a>
+685 | >-fstruct-layout=5</a>
+1670 | >-fopenmp</a>
+1300 | >-mllvm -function-specialize</a>
+559 | >-mllvm -global-vectorize-slp</a>
+1670 | >-lamdlibm</a>

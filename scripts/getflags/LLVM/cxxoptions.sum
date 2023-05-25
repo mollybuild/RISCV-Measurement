@@ -1,0 +1,55 @@
+320 | >-lmvec</a>
+357 | >-mllvm -convert-pow-exp-to-int=false</a>
+231 | >-DUSE_OPENMP</a>
+553 | >-m64</a>
+564 | >-finline-aggressive</a>
+693 | >-ljemalloc</a>
+873 | >-Wl,-mllvm -Wl,-reduce-array-computations=3</a>
+357 | >-mllvm -reroll-loops</a>
+5 | >-fuse-ld=lld</a>
+320 | >-Wl,-mllvm -Wl,-suppress-fmas</a>
+5 | >-Wl,-mllvm -Wl,-x86-use-vzeroupper=false</a>
+677 | >-Wl,-mllvm -Wl,-region-vectorize</a>
+553 | >-fvirtual-function-elimination</a>
+873 | >-lflang</a>
+320 | >-Wl,-mllvm -Wl,-vector-library=LIBMVEC</a>
+878 | >-ffast-math</a>
+280 | >-lflangrti</a>
+889 | >-mllvm -unroll-threshold=100</a>
+11 | >-Wl,-mllvm -Wl,-enable-vectorize-compares</a>
+16 | >-mllvm -inline-threshold=1000</a>
+553 | >-fveclib=AMDLIBM</a>
+16 | >-march=znver1</a>
+889 | >-flto</a>
+196 | >-lamdalloc-ext</a>
+693 | >-Wl,-mllvm -Wl,-function-specialize</a>
+280 | >-mllvm -do-block-reorder=aggressive</a>
+889 | >-lomp</a>
+331 | >-lpthread</a>
+280 | >-mno-adx</a>
+553 | >-Wl,-mllvm -Wl,-align-all-nofallthru-blocks=6</a>
+320 | >-march=znver2</a>
+331 | >-ldl</a>
+196 | >-zopt</a>
+889 | >-DSPEC_OPENMP</a>
+357 | >-march=znver3</a>
+889 | >-fopenmp=libomp</a>
+11 | >-mllvm -enable-vectorize-compares=false</a>
+280 | >-std=c++98</a>
+889 | >-O3</a>
+320 | >-mllvm -vector-library=LIBMVEC</a>
+357 | >-mllvm -extra-vectorizer-passes</a>
+357 | >-mllvm -global-vectorize-slp=true</a>
+357 | >-mllvm -aggressive-loop-unswitch</a>
+553 | >-mllvm -reduce-array-computations=3</a>
+693 | >-z muldefs</a>
+682 | >-flv-function-specialization</a>
+16 | >-fremap-arrays</a>
+196 | >-march=znver4</a>
+280 | >-mno-sse4a</a>
+553 | >-fvisibility=hidden</a>
+873 | >-mllvm -loop-unswitch-threshold=200000</a>
+280 | >-Wl,-mllvm -Wl,-do-block-reorder=aggressive</a>
+889 | >-fopenmp</a>
+682 | >-mllvm -enable-partial-unswitch</a>
+889 | >-lamdlibm</a>

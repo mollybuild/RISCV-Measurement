@@ -1,0 +1,9 @@
+| >-m64</a>
+| >-Wl,-mllvm -Wl,-align-all-nofallthru-blocks=6</a>
+| >-Wl,-mllvm -Wl,-reduce-array-computations=3</a>
+| >-Wl,-mllvm -Wl,-enable-X86-prefetching</a>
+| >-DSPEC_OPENMP</a>
+| >-O3</a>
+| >-march=znver4</a>
+| >-fveclib=AMDLIBM</a>
+| >-ffast-math</a>

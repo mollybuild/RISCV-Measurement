@@ -1,0 +1,10 @@
+1 | >-L/home/amptest/ampere_spec2017/spec2017/jemalloc/install/lib</a>
+1 | >-Wl,-Map,mapfile</a>
+5 | >-L/home/amptest/ampere_spec2017/gcc/install/lib</a>
+1 | >-L/home/amptest/ampere_spec2017/spec2017/gcc/install/lib64</a>
+6 | >-std=c++03</a>
+10 | >-mabi=lp64</a>
+6 | >-ljemalloc</a>
+5 | >-L/home/amptest/ampere_spec2017/jemalloc/install/lib</a>
+5 | >-L/home/amptest/ampere_spec2017/gcc/install/lib64</a>
+1 | >-L/home/amptest/ampere_spec2017/spec2017/gcc/install/lib</a>

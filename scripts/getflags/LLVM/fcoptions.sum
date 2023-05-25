@@ -1,0 +1,104 @@
+5 | >-Wl,-unroll-aggressive</a>
+1037 | >-lmvec</a>
+99 | >-fplugin-arg-dragonegg-llvm-option=-merge-constant</a>
+16 | >-fplugin-arg-dragonegg-llvm-option=-unroll-threshold:150</a>
+328 | >-mllvm -convert-pow-exp-to-int=false</a>
+889 | >-Wl,-mllvm -Wl,-lsr-in-nested-loop</a>
+739 | >-DUSE_OPENMP</a>
+2059 | >-m64</a>
+2679 | >-funroll-loops</a>
+110 | >-madx</a>
+535 | >-finline-aggressive</a>
+2514 | >-ljemalloc</a>
+348 | >-fstruct-layout=7</a>
+873 | >-mllvm -unroll-aggressive</a>
+717 | >-Kieee</a>
+3096 | >-Wl,-mllvm -Wl,-reduce-array-computations=3</a>
+328 | >-mllvm -reroll-loops</a>
+26 | >-fuse-ld=lld</a>
+110 | >-mavx</a>
+11 | >-Wl,-mllvm -Wl,-unroll-aggressive</a>
+239 | >-Wl,-mllvm -Wl,-suppress-fmas</a>
+509 | >-Wl,-mllvm -Wl,-x86-use-vzeroupper=false</a>
+2378 | >-Wl,-mllvm -Wl,-region-vectorize</a>
+2543 | >-Mrecursive</a>
+3096 | >-lflang</a>
+7 | >-Wl,-mllvm -Wl,-enable-partial-unswitch</a>
+16 | >-fplugin-arg-dragonegg-llvm-option=-unroll-aggressive</a>
+5 | >-Wl,-mllvm</a>
+717 | >-fno-finite-math-only</a>
+718 | >-lamdalloc</a>
+1037 | >-Wl,-mllvm -Wl,-vector-library=LIBMVEC</a>
+2993 | >-ffast-math</a>
+1069 | >-lflangrti</a>
+21 | >-fplugin-arg-dragonegg-llvm-option=-inline-threshold:1000</a>
+873 | >-mllvm -unroll-threshold=150</a>
+16 | >-fplugin-arg-dragonegg-llvm-option=-disable-indvar-simplify</a>
+984 | >-Hz,1,0x1</a>
+781 | >-mllvm -unroll-threshold=100</a>
+11 | >-Wl,-mllvm -Wl,-enable-vectorize-compares</a>
+1562 | >-mllvm -inline-threshold=1000</a>
+137 | >-O1</a>
+2059 | >-fveclib=AMDLIBM</a>
+293 | >-Wno-unused-command-line-argument</a>
+80 | >-march=znver1</a>
+2904 | >-flto</a>
+136 | >-fplugin=dragonegg.so</a>
+195 | >-mllvm -enable-loopinterchange</a>
+984 | >-mllvm -enable-licm-vrp</a>
+99 | >-Wl,-plugin-opt=-lsr-in-nested-loop</a>
+2415 | >-Wl,-mllvm -Wl,-function-specialize</a>
+195 | >-mllvm -compute-interchange-order</a>
+348 | >-fstrip-mining</a>
+3232 | >-lomp</a>
+137 | >-O2</a>
+80 | >-mno-avx2</a>
+1147 | >-lpthread</a>
+1069 | >-mno-adx</a>
+2059 | >-Wl,-mllvm -Wl,-align-all-nofallthru-blocks=6</a>
+11 | >-frepack-arrays</a>
+1037 | >-march=znver2</a>
+1147 | >-ldl</a>
+889 | >-Wl,-mllvm -Wl,-inline-recursion=4</a>
+96 | >-lgfortran</a>
+522 | >-zopt</a>
+1341 | >-march=znver3</a>
+3036 | >-DSPEC_OPENMP</a>
+363 | >-Wno-return-type</a>
+99 | >-Wl,-plugin-opt=-enable-vectorize-compares=false</a>
+16 | >-specs=integrated-as.specs</a>
+196 | >-mllvm -optimize-strided-mem-cost</a>
+16 | >-Wl,-mllvm -Wl,-merge-constant</a>
+33 | >-mllvm -enable-vectorize-compares=false</a>
+3232 | >-fopenmp=libomp</a>
+558 | >-fstruct-layout=3</a>
+1506 | >-mllvm -lsr-in-nested-loop</a>
+535 | >-std=c++98</a>
+3232 | >-O3</a>
+1037 | >-mllvm -vector-library=LIBMVEC</a>
+1214 | >-mllvm -enable-gvn-hoist</a>
+984 | >-mllvm -extra-vectorizer-passes</a>
+99 | >-Wl,-plugin-opt=-merge-constant</a>
+984 | >-mllvm -global-vectorize-slp=true</a>
+1984 | >-mllvm -reduce-array-computations=3</a>
+328 | >-mllvm -aggressive-loop-unswitch</a>
+2514 | >-z muldefs</a>
+16 | >-Wl,-mllvm -Wl,-unroll-threshold=150</a>
+1214 | >-flv-function-specialization</a>
+1562 | >-fremap-arrays</a>
+718 | >-march=znver4</a>
+1069 | >-mno-sse4a</a>
+741 | >-mllvm -loop-unswitch-threshold=200000</a>
+1562 | >-mllvm -unroll-threshold=50</a>
+656 | >-Wl,-mllvm -Wl,-enable-licm-vrp</a>
+889 | >-Wl,-mllvm -Wl,-enable-iv-split</a>
+320 | >-mllvm -disable-indvar-simplify</a>
+656 | >-fstruct-layout=5</a>
+3232 | >-fopenmp</a>
+1214 | >-mllvm -function-specialize</a>
+478 | >-mllvm -global-vectorize-slp</a>
+984 | >-mllvm -fuse-tile-inner-loop</a>
+99 | >-fplugin-arg-dragonegg-llvm-option=-enable-vectorize-compares:false</a>
+1004 | >-Wl,-mllvm -Wl,-enable-X86-prefetching</a>
+574 | >-mllvm -enable-partial-unswitch</a>
+3232 | >-lamdlibm</a>

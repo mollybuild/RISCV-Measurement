@@ -1,0 +1,33 @@
+1 | >-L/opt/rh/devtoolset-10/root/usr/bin//lib</a>
+2 | >-L/home/jemalloc-5.2.1-setup/lib</a>
+2 | >-L/home/amptest/ampere_spec2017/spec2017/jemalloc/install/lib</a>
+2 | >-fcommon</a>
+2 | >-Wl,-Map,mapfile</a>
+7 | >--param ipa-cp-eval-threshold=1</a>
+9 | >-flto</a>
+10 | >-L/home/amptest/ampere_spec2017/gcc/install/lib</a>
+7 | >-fstack-arrays</a>
+1 | >-L/opt/rh/devtoolset-10/root/usr/bin//lib64</a>
+1 | >-L/home/jemalloc-5.2.1/lib</a>
+2 | >-L/home/amptest/ampere_spec2017/spec2017/gcc/install/lib64</a>
+19 | >-mabi=lp64</a>
+15 | >-ljemalloc</a>
+7 | >-flto-partition=one</a>
+10 | >-L/home/amptest/ampere_spec2017/jemalloc/install/lib</a>
+10 | >-L/home/amptest/ampere_spec2017/gcc/install/lib64</a>
+6 | >-fomit-frame-pointer</a>
+8 | >-Ofast</a>
+8 | >-flto=32</a>
+2 | >-L/home/amptest/ampere_spec2017/spec2017/gcc/install/lib</a>
+6 | >-march=armv8.2-a+lse</a>
+13 | >-funroll-loops</a>
+6 | >-fno-PIE</a>
+7 | >-fno-inline-functions-called-once</a>
+4 | >-pipe</a>
+7 | >--param ipa-cp-unit-growth=80</a>
+7 | >--param ipa-cp-max-recursive-depth=8</a>
+6 | >-no-pie</a>
+11 | >-O3</a>
+17 | >-g</a>
+13 | >-mcpu=neoverse-n1</a>
+6 | >-fno-stack-arrays</a>
