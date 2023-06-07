@@ -1,15 +1,16 @@
 #!/bin/bash
 
 ## Usage: ./autoRunSPECCPU.sh [GCC/LLVM] [O3/Ofast/Both]
+## or ./autoRunSPECCPU.sh [GCC-x.x.x/LLVM-x.x.x] [O3/Ofast/Both]
 ## Getting parameters of the scripts
 
 compiler="GCC"
 version="" # x.x.x
 opt=O3
-SPECdir="$HOME/spec/CPU2017-v1.1.9"
+SPECdir="$HOME/Benchmarks/CPU2017-v1.1.9"
 script_dir=$(pwd $(dirname $0))
 machine=$(hostname)
-SPECCPUconfig=""
+SPECCPUconfig="gcc-riscv.cfg"
 
 ## Handle unexpect exit
 trap "echo Fail unexpectedly on line \$0:\$LINENO; exit 1" ERR
@@ -41,7 +42,7 @@ cd /gnu/gcc
 ls -l gccList.txt
 bye
 EOF
-        if [ $version == ""]; then
+        if [ $version == "" ]; then
             # gccver is the newest version of gcc.
             # the line in gccList.txt goes like:
             # drwxr-xr-x    2 3003     3003         4096 Apr 08  2021 gcc-10.3.0
@@ -72,6 +73,7 @@ EOF
             setEnv
             cd GCC-source/$gccver
             contrib/download_prerequisites
+	    rm -rf build
             mkdir build && cd build
             ../configure --enable-languages=c,c++,fortran --prefix=$HOME/opt/$gccver --disable-multilib
             make -j$(nproc)
@@ -143,6 +145,7 @@ if [ $# -ge 1 ]; then
         version=$(echo $1 | awk -F "-" '{print $2}')
     else
         echo "Usage: ./autoRunSPECCPU.sh [GCC/LLVM] [O3/Ofast/Both]"
+	echo "or ./autoRunSPECCPU.sh [GCC-x.x.x/LLVM-x.x.x] [O3/Ofast/Both]"
         echo "The first parameter should be GCC or LLVM."
         exit 1
     fi
@@ -151,6 +154,7 @@ fi
 if [ $# -ge 2 ]; then
     if [ $2 != "O3" ] && [ $2 != "Ofast" ] && [ $2 != "Both" ]; then
         echo "Usage: ./autoRunSPECCPU.sh [GCC/LLVM] [O3/Ofast/Both]"
+	echo "or ./autoRunSPECCPU.sh [GCC-x.x.x/LLVM-x.x.x] [O3/Ofast/Both]"
         echo "The second parameter should be O3 or Ofast or Both."
         exit 1
     fi
@@ -167,7 +171,7 @@ fi
 
 ## install prerequisites
 
-sudo apt install ftp wget ninja-build clang
+sudo apt install ftp wget ninja-build clang bzip2 make
 
 ## Get GCC/LLVM source code, build and install
 getnbuildsrc
@@ -205,7 +209,7 @@ cd $SPECdir
 source shrc
 
 if [ $compiler == "GCC" ]; then
-    SPECCPUconfig="my-gcc-linux-x86.cfg"
+    #SPECCPUconfig="gcc-riscv.cfg"
     if [ $opt == O3 ]; then
         runcpu --define build_ncpus=$(nproc) --define gcc_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T base all 2>&1 | tee cpu.log
     elif [ $opt == Ofast ]; then
@@ -214,7 +218,7 @@ if [ $compiler == "GCC" ]; then
         runcpu --define build_ncpus=$(nproc) --define gcc_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T all all 2>&1 | tee cpu.log
     fi
 elif [ $compiler == "LLVM" ]; then
-    SPECCPUconfig="my-llvm-linux-x86.cfg"
+    #SPECCPUconfig="my-llvm-linux-x86.cfg"
     if [ $opt == O3 ]; then
         runcpu --define build_ncpus=$(nproc) --define llvm_dir=$HOME/opt/$testcompiler --copies $(nproc) --threads $(nproc) -c $SPECCPUconfig --noreportable -n 1 -I -T base all 2>&1 | tee cpu.log
     elif [ $opt == Ofast ]; then
