@@ -8,21 +8,22 @@ https://github.com/mollybuild/RISCV-Measurement/blob/master/scripts/getflags/spe
 
 GCC：
 
-<img src="C:\Users\MollyChen\Pictures\Screenshots\屏幕截图 2023-05-25 101046.png" alt="屏幕截图 2023-05-25 101046" style="zoom: 80%;" />
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/017b8ec4-259f-4148-a259-2eeba6b90846)
 
 AOCC：
 
-<img src="C:\Users\MollyChen\AppData\Roaming\Typora\typora-user-images\image-20230703151036474.png" alt="image-20230703151036474" style="zoom:50%;" />
+
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/f7d97b55-d2ae-4df3-ad20-fc37556ad728)
 
 ICC：
 
-![屏幕截图 2023-05-25 101139](C:\Users\MollyChen\Pictures\Screenshots\屏幕截图 2023-05-25 101139.png)
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/cf7b3b2f-c32a-4af2-ae32-43bd11120e70)
 
 AOCC是基于LLVM针对AMD芯片做了优化的编译器，可以在AMD官网上免费下载，有很多选项都是AOCC特有而Clang没有。Intel ICC是付费的，针对Intel CPU优化，在向量化、并行化上优于GCC，对Intel CPU的跑分ICC也明显更高。
 
 从SPEC官网报告中摘出的这些选项，我们这里仅看GCC/Clang通用的几个，因为目前我们工作主要在RISCV芯片上，就暂时忽略AOCC和ICC特有的优化选项啦。我们大概要看一遍的选项有下列这些：
 
-<img src="C:\Users\MollyChen\AppData\Roaming\Typora\typora-user-images\image-20230703154501535.png" alt="image-20230703154501535" style="zoom:50%;" />
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/ee19fab8-b314-4486-a53c-d4d218da9c1d)
 
 ### -funroll-loops
 
@@ -64,14 +65,13 @@ gcc -o myprog -flto -O2 foo.c bar.c
 
 在x86上使用GCC测试LTO+PGC带来的性能buff，结果如下图，对不同的benchmark影响不同，有的benchmark能获得超过30%的性能提升，例如511.povray_r，但也有部分benchmark性能反而下降了，多个benchmark下降超过20%，其中548.exchange2_r下降最多，降幅25%。但从整体来看，除了fpspeed，其它三个metric均提升了4-5%。
 
-<img src="D:\Typora\typora-user-images\image-20230602175744522.png" alt="image-20230602175744522" style="zoom:50%;" />
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/564c6c99-b9ec-403b-90ac-fa0e94633b88)
 
-<img src="D:\Typora\typora-user-images\image-20230602180129349.png" alt="image-20230602180129349" style="zoom:50%;" />
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/39bb4571-abd1-44c8-91f3-bfa63dce3f8d)
 
-<img src="D:\Typora\typora-user-images\image-20230602180742562.png" alt="image-20230602180742562" style="zoom:50%;" />
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/208ef28c-e96c-4798-a781-f5228d0809d3)
 
-<img src="D:\Typora\typora-user-images\image-20230602181035247.png" alt="image-20230602181035247" style="zoom:50%;" />
-
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/ca67acad-8c92-416f-ab5d-72a348ba0c72)
 
 
 ### -ffinite-loops
@@ -119,13 +119,13 @@ This option is not turned on by any -O option besides -Ofast since it can result
 
 -ffast-math我们也在x86上使用GCC测试了性能buff，可以看到它对int型benchmark没有帮助，整体分数反而有些下降，因为它本身是针对浮点运算的优化，fpspeed和fprate分别由6.67%和8.04%的性能提升。详细的分数见下图第三列：
 
-![image-20230605114835017](D:\Typora\typora-user-images\image-20230605114835017.png)
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/967168e2-69f7-4dfb-9550-8a960024f601)
 
-![image-20230605115034624](D:\Typora\typora-user-images\image-20230605115034624.png)
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/214dd47b-50fb-4e94-9549-5abfb8b7012d)
 
-![image-20230605115055975](D:\Typora\typora-user-images\image-20230605115055975.png)
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/d2140a19-a9f2-44ed-af72-f8e64f1f10d8)
 
-![image-20230605115221363](D:\Typora\typora-user-images\image-20230605115221363.png)
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/d434b2ca-efa1-4214-919c-5add21f6dfa8)
 
 ### -ljemalloc
 
@@ -206,7 +206,7 @@ llvm的参数，GCC没有这个参数，GCC有-fhoist-adjacent-loads，-fira-hoi
 
 功能是将那些在所有分支路径上都存在的运算表达式提到分支前，这个优化主要有利于优化代码体积，通常对代码速度也是有帮助的。优化示例如下：
 
-<img src="C:\Users\MollyChen\AppData\Roaming\Typora\typora-user-images\image-20230628174353331.png" alt="image-20230628174353331" style="zoom:50%;" />
+![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/5a9231ac-5bb7-450b-8194-f7a4d74525ca)
 
 ### -fopenmp
 
