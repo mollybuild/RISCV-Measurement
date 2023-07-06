@@ -76,6 +76,12 @@ gcc -o myprog -flto -O2 foo.c bar.c
 
 ### -ffinite-loops
 
+```
+Assume that a loop with an exit will eventually take the exit and not loop indefinitely. This allows the compiler to remove loops that otherwise have no side-effects, not considering eventual endless looping as such.
+
+This option is enabled by default at -O2 for C++ with -std=c++11 or higher.
+```
+
 ###  -fomit-frame-pointer
 
 ### -z muldefs
@@ -209,6 +215,21 @@ llvm的参数，GCC没有这个参数，GCC有-fhoist-adjacent-loads，-fira-hoi
 ![image](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/5a9231ac-5bb7-450b-8194-f7a4d74525ca)
 
 ### -fopenmp
+GCC开启openmp，编译器会根据OpenMP应用程序接口v4.5（[https://www.openmp.org](https://www.openmp.org/).）生成并行代码。该选项包含了-pthread和-fopenmp-simd，因此该选项需要目标环境支持-pthread。
+
+libiomp5，libgomp，libomp分别是intel、gnu和clang的OpenMP runtime library。GCC默认使用libgomp，clang默认使用libomp。clang也可以通过-fopenmp=libxxx来指定运行时库。对625进行测试，libomp和libgomp效果相当：
+
+clang with `-fopenmp=libomp`
+
+```
+625.x264_s            4       3117      0.566  *
+```
+
+clang with `-fopenmp=libgomp`
+
+```
+625.x264_s            4       3115      0.566  *
+```
 
 ### -fvirtual-function-elimination
 
