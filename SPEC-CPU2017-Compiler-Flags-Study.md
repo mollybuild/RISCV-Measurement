@@ -206,6 +206,10 @@ int main() {
 
 对于这个简单程序，在RV平台上，jemalloc对内存操作没有提升，反而耗时更久；而在x86上jemalloc带来了25%的速度提升。jemalloc实际对RV平台上SPEC CPU2017的影响还有待测试。
 
+在unmatched上测试的情况如下图，jemalloc库对INT有显著的提升，特别是intrate：
+![1690781258734](https://github.com/mollybuild/RISCV-Measurement/assets/26591790/27614eeb-cba5-4f3d-b45d-1febce699762)
+
+
 ### -mllvm -enable-gvn-hoist
 
 llvm的参数，GCC没有这个参数，GCC有-fhoist-adjacent-loads，-fira-hoist-pressure，-fcode-hoisting这三个参数，应该和-fcode-hoisting的功能相似，GCC默认在O2及以上开启。
